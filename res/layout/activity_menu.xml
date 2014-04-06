@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MenuActivity" >
+
+    <ImageButton
+        android:id="@+id/imgBtnPIN"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imgBtnPlay"
+        android:src="@drawable/pin" />
+
+    <ImageButton
+        android:id="@+id/imgBtnPlay"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/play" />
+
+    <ImageButton
+        android:id="@+id/imgBtnStartForward"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imgBtnPlay"
+        android:layout_below="@+id/imgBtnPlay"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/callforward" />
+
+    <ImageButton
+        android:id="@+id/imgBtnStopForward"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imgBtnPIN"
+        android:layout_alignTop="@+id/imgBtnStartForward"
+        android:src="@drawable/stop" />
+
+    <ImageButton
+        android:id="@+id/imgLocation"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imgBtnStartForward"
+        android:layout_below="@+id/imgBtnStartForward"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/location" />
+
+    <ImageButton
+        android:id="@+id/imgHelp"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imgBtnStopForward"
+        android:layout_alignTop="@+id/imgLocation"
+        android:src="@drawable/save" />
+
+</RelativeLayout>
