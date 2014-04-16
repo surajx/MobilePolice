@@ -60,7 +60,10 @@ public class Utils {
 	}
 
 	public static MissionRequest parseMissionRequest(String smsMessage) {
-
+		// TODO parse the sms and return a mission request bean containing three
+		// parts:
+		// the mission identifier, like callfwd, call, location, play etc.
+		// the pin and the data over which the mission is executed.
 		return null;
 	}
 

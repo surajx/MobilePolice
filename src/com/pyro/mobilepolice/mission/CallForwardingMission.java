@@ -21,6 +21,7 @@ public class CallForwardingMission implements Mission {
 		PreferenceManager preferenceManager = new PreferenceManager(context);
 		if (isStartForwarding) {
 			int callTextIndex = mMissionData.indexOf("+");
+			// TODO not a good logic
 			String phoneNumber = mMissionData.substring(callTextIndex + 1,
 					callTextIndex + 11);
 			preferenceManager.putCallForwardingNumber(phoneNumber);

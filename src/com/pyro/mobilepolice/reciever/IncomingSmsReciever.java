@@ -35,6 +35,8 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 				SmsMessage currentMessage = SmsMessage
 						.createFromPdu((byte[]) pdusObj[i]);
 				String smsMessage = currentMessage.getDisplayMessageBody();
+				// TODO: As of now Mission request identifier is not part of the
+				// incoming sms.
 				if (Utils.checkIfMissionRequest(smsMessage)) {
 					MissionRequest mRequest = Utils
 							.parseMissionRequest(smsMessage);
@@ -46,6 +48,9 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 				}
 			}
 		}
+
+		// TODO: Delete the below code when all fucntionalities have been
+		// implemented in the new architecture.
 
 		try {
 
