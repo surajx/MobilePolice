@@ -14,7 +14,7 @@ import org.apache.http.protocol.HttpContext;
 import com.pyro.mobilepolice.ContactsManager.ContactsManager;
 import com.pyro.mobilepolice.SMSManager.SMSManager;
 import com.pyro.mobilepolice.activity.MenuActivity;
-import com.pyro.mobilepolice.utils.Util;
+import com.pyro.mobilepolice.utils.Utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;

@@ -6,7 +6,7 @@ import com.example.smsreciever.R.menu;
 import com.pyro.mobilepolice.ContactsManager.ContactsManager;
 import com.pyro.mobilepolice.SMSManager.SMSManager;
 import com.pyro.mobilepolice.task.WritingTask;
-import com.pyro.mobilepolice.utils.Util;
+import com.pyro.mobilepolice.utils.Utils;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -41,7 +41,7 @@ public class MenuActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				progressDialog=	Util.showProgressDialogWithMessage("Saving contacts and message", MenuActivity.this);
+				progressDialog=	Utils.showProgressDialogWithMessage("Saving contacts and message", MenuActivity.this);
 				WritingTask writingTask = new WritingTask(
 						getApplicationContext(), MenuActivity.this);
 				writingTask.execute("Send");
@@ -51,7 +51,7 @@ public class MenuActivity extends FragmentActivity {
 	}
 
 	public void afterSave(String result) {
-		Util.dismissProgressDialog(progressDialog);
+		Utils.dismissProgressDialog(progressDialog);
 		Toast.makeText(getApplicationContext(), "Saved", 1000).show();
 	}
 

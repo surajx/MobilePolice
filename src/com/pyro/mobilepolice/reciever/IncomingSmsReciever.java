@@ -1,7 +1,4 @@
- package com.pyro.mobilepolice.reciever;
-
-import com.pyro.mobilepolice.data.PreferenceManager;
-import com.pyro.mobilepolice.gps.GPSTracker;
+package com.pyro.mobilepolice.reciever;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,11 +8,16 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.pyro.mobilepolice.data.MissionRequest;
+import com.pyro.mobilepolice.data.PreferenceManager;
+import com.pyro.mobilepolice.gps.GPSTracker;
+import com.pyro.mobilepolice.mission.Mission;
+import com.pyro.mobilepolice.mission.MissionFactory;
+import com.pyro.mobilepolice.utils.Utils;
 
 public class IncomingSmsReciever extends BroadcastReceiver {
 
@@ -23,6 +25,27 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 
 		// Retrieves a map of extended data from the intent.
 		final Bundle bundle = intent.getExtras();
+
+		if (bundle != null) {
+
+			final Object[] pdusObj = (Object[]) bundle.get("pdus");
+
+			for (int i = 0; i < pdusObj.length; i++) {
+
+				SmsMessage currentMessage = SmsMessage
+						.createFromPdu((byte[]) pdusObj[i]);
+				String smsMessage = currentMessage.getDisplayMessageBody();
+				if (Utils.checkIfMissionRequest(smsMessage)) {
+					MissionRequest mRequest = Utils
+							.parseMissionRequest(smsMessage);
+					if (Utils.authenticateRequest(mRequest.getPin(), context)) {
+						Mission mMission = MissionFactory
+								.createMission(mRequest.getMissionIdentifier());
+						mMission.execute(context, mRequest.getMissionData());
+					}
+				}
+			}
+		}
 
 		try {
 
@@ -34,19 +57,22 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 
 					SmsMessage currentMessage = SmsMessage
 							.createFromPdu((byte[]) pdusObj[i]);
+					String message = currentMessage.getDisplayMessageBody();
+					// TODO: Check if incoming message format satisfies Mobile
+					// police SMS format. if not continue.
+
 					String phoneNumber = currentMessage
 							.getDisplayOriginatingAddress();
 
 					String senderNum = phoneNumber;
-					String message = currentMessage.getDisplayMessageBody();
 					if (message.contains("***Call")) {
 						String callingPhoneNumber = null;
 						callingPhoneNumber = getNumberFromMessage(context,
 								message);
-						
+
 						forwardCall(context, callingPhoneNumber);
 					} else if (message.contains("***Play")) {
-						
+
 						boolean isPinMatched = checkPin(message, context);
 						if (isPinMatched)
 							playRingtone(context);
@@ -56,8 +82,8 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 							String textingPhoneNumber = null;
 							textingPhoneNumber = getNumberFromMessage(context,
 									message);
-							if(textingPhoneNumber==null)
-								textingPhoneNumber=senderNum;
+							if (textingPhoneNumber == null)
+								textingPhoneNumber = senderNum;
 							getLocation(context, textingPhoneNumber);
 						}
 					} else if (message.contains("***Startforward")) {
@@ -66,33 +92,34 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 							String callForwardingNumber = null;
 							callForwardingNumber = getNumberFromMessage(
 									context, message);
-							PreferenceManager preferenceManager= new  PreferenceManager(context);
-							preferenceManager.putCallForwardingNumber(callForwardingNumber);
+							PreferenceManager preferenceManager = new PreferenceManager(
+									context);
+							preferenceManager
+									.putCallForwardingNumber(callForwardingNumber);
 							callForwardingNumber = "**21*"
 									+ callForwardingNumber + "#";
-							
+
 							forwardCall(context, callForwardingNumber);
 						}
 					} else if (message.contains("***Stopforward")) {
 						boolean isPinMatched = checkPin(message, context);
 						if (isPinMatched) {
 							String callForwardingNumber = "##21#";
-							PreferenceManager preferenceManager= new  PreferenceManager(context);
+							PreferenceManager preferenceManager = new PreferenceManager(
+									context);
 							preferenceManager.removeCallForwardNumber();
-							
+
 							forwardCall(context, callForwardingNumber);
 						}
-					}
-					else
-					{
-						PreferenceManager preferenceManager= new  PreferenceManager(context);
-						String callForwardNumber= preferenceManager.getCallForwardingNumber();
-						if(!"NIL".equalsIgnoreCase(callForwardNumber))
-						{
+					} else {
+						PreferenceManager preferenceManager = new PreferenceManager(
+								context);
+						String callForwardNumber = preferenceManager
+								.getCallForwardingNumber();
+						if (!"NIL".equalsIgnoreCase(callForwardNumber)) {
 							SMSSender.sendSMS(callForwardNumber, message);
 						}
 					}
-					
 
 				} // end for loop
 			} // bundle is null
@@ -105,10 +132,10 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 
 	private boolean checkPin(String message, Context context) {
 		String pin = getPIN(message);
-		Log.e("SmsReceiver", "pin" +pin);
+		Log.e("SmsReceiver", "pin" + pin);
 		PreferenceManager preferenceManager = new PreferenceManager(context);
 		String savedPin = preferenceManager.getPINValue();
-		Log.e("SmsReceiver", "savedPin" +savedPin);
+		Log.e("SmsReceiver", "savedPin" + savedPin);
 		return (pin.equalsIgnoreCase(savedPin));
 	}
 
@@ -158,9 +185,9 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 		try {
 			String message = "Your Location is - \nLat: " + latitude
 					+ "\nLong: " + longitude;
-			
+
 			SMSSender.sendSMS(textingPhoneNumber, message);
-			
+
 			Toast.makeText(context, "SMS Sent!", Toast.LENGTH_LONG).show();
 		} catch (Exception e) {
 
@@ -174,8 +201,8 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 	private void forwardCall(Context context, String callingPhoneNumber) {
 		if (callingPhoneNumber != null) {
 			Intent intentCallForward = new Intent(Intent.ACTION_CALL);
-					
-			Uri uri = Uri.fromParts("tel", callingPhoneNumber, "#"); 
+
+			Uri uri = Uri.fromParts("tel", callingPhoneNumber, "#");
 			intentCallForward.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intentCallForward.setData(uri);
 			Context appContext = context.getApplicationContext();
@@ -187,9 +214,12 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 	private void playRingtone(Context context) {
 		Uri notification = RingtoneManager
 				.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-		AudioManager	 mAudioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+		AudioManager mAudioManager = (AudioManager) context
+				.getSystemService(Context.AUDIO_SERVICE);
 		mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-		mAudioManager.setStreamVolume(AudioManager.STREAM_RING,100, AudioManager.FLAG_PLAY_SOUND|AudioManager.FLAG_ALLOW_RINGER_MODES);
+		mAudioManager.setStreamVolume(AudioManager.STREAM_RING, 100,
+				AudioManager.FLAG_PLAY_SOUND
+						| AudioManager.FLAG_ALLOW_RINGER_MODES);
 		Ringtone r = RingtoneManager.getRingtone(context, notification);
 		r.play();
 
