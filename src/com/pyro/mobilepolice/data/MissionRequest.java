@@ -5,6 +5,7 @@ public class MissionRequest {
 	private String pin;
 	private String missionIdentifier;
 	private String missionData;
+	private String missionOrigin;
 
 	public String getMissionData() {
 		return missionData;
@@ -28,5 +29,13 @@ public class MissionRequest {
 
 	public void setPin(String pin) {
 		this.pin = pin;
+	}
+
+	public String getMissionOrigin() {
+		return missionOrigin;
+	}
+
+	public void setMissionOrigin(String missionOrigin) {
+		this.missionOrigin = missionOrigin;
 	}
 }

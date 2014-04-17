@@ -12,7 +12,11 @@ public class MissionFactory {
 			return new CallForwardingMission(true);
 		} else if (Const.MISSION_IDENTIFIER_STOP_CALL_FWD
 				.equals(missionIdentifier)) {
-			return new CallForwardingMission(true);
+			return new CallForwardingMission(false);
+		} else if (Const.MISSION_IDENTIFIER_RING.equals(missionIdentifier)) {
+			return new PlayRingtoneMission();
+		} else if (Const.MISSION_IDENTIFIER_LOCATE.equals(missionIdentifier)) {
+			return new GPSLocateMission();
 		}
 		// TODO: add other mission types.
 		return null;

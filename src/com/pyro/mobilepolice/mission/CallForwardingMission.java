@@ -2,6 +2,7 @@ package com.pyro.mobilepolice.mission;
 
 import android.content.Context;
 
+import com.pyro.mobilepolice.data.MissionRequest;
 import com.pyro.mobilepolice.data.PreferenceManager;
 import com.pyro.mobilepolice.utils.Utils;
 
@@ -17,7 +18,8 @@ public class CallForwardingMission implements Mission {
 	}
 
 	@Override
-	public void execute(Context context, String mMissionData) {
+	public void execute(Context context, MissionRequest mRequest) {
+		String mMissionData = mRequest.getMissionData();
 		PreferenceManager preferenceManager = new PreferenceManager(context);
 		if (isStartForwarding) {
 			int callTextIndex = mMissionData.indexOf("+");
@@ -32,5 +34,4 @@ public class CallForwardingMission implements Mission {
 			Utils.callPhoneNumber(context, stopForwardingUSSDCode);
 		}
 	}
-
 }

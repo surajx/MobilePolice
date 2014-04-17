@@ -12,8 +12,12 @@ import android.view.Window;
 import com.pyro.mobilepolice.constants.Const;
 import com.pyro.mobilepolice.data.MissionRequest;
 import com.pyro.mobilepolice.data.PreferenceManager;
+import com.pyro.mobilepolice.reciever.SMSSender;
 
 public class Utils {
+
+	public final static String TAG = "Utils";
+
 	public static ProgressDialog showProgressDialogWithMessage(String message,
 			Context context) {
 
@@ -56,15 +60,22 @@ public class Utils {
 	}
 
 	public static boolean checkIfMissionRequest(String smsMessage) {
-		return smsMessage.contains(Const.MISSION_REQUEST_IDENTIFIER);
+		return smsMessage.startsWith(Const.MISSION_REQUEST_IDENTIFIER);
 	}
 
-	public static MissionRequest parseMissionRequest(String smsMessage) {
-		// TODO parse the sms and return a mission request bean containing three
-		// parts:
-		// the mission identifier, like callfwd, call, location, play etc.
-		// the pin and the data over which the mission is executed.
-		return null;
+	public static MissionRequest parseMissionRequest(String smsMessage)
+			throws Exception {
+		String parts[] = smsMessage.split(Const.MISSION_REQUEST_DELIMITER);
+		MissionRequest mMissionRequest = new MissionRequest();
+		mMissionRequest.setPin(parts[1]); // pin - required
+		mMissionRequest.setMissionIdentifier(parts[2]);
+		// mission identifier - required
+		try {
+			mMissionRequest.setMissionData(parts[3]);// mission data - optional
+		} catch (Exception e) {
+			Log.d(TAG, "Mission data not provided.");
+		}
+		return mMissionRequest;
 	}
 
 	public static void callPhoneNumber(Context context, String phoneNumber) {
@@ -80,10 +91,14 @@ public class Utils {
 	}
 
 	public static boolean authenticateRequest(String pin, Context context) {
-		Log.e("SmsReceiver", "pin" + pin);
+		Log.d(TAG, "pin" + pin);
 		PreferenceManager preferenceManager = new PreferenceManager(context);
 		String savedPin = preferenceManager.getPINValue();
-		Log.e("SmsReceiver", "savedPin" + savedPin);
+		Log.e(TAG, "savedPin" + savedPin);
 		return (pin.equalsIgnoreCase(savedPin));
+	}
+
+	public static void sendSMS(String senderNumber, String message) {
+		SMSSender.sendSMS(senderNumber, message);
 	}
 }
