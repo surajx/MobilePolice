@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.smsreciever.R;
+import com.pyro.mobilepolice.R;
 import com.pyro.mobilepolice.data.PreferenceManager;
 
 public class PinChangeActivity extends FragmentActivity {
@@ -27,7 +27,7 @@ public class PinChangeActivity extends FragmentActivity {
 				PreferenceManager preferenceManager = new PreferenceManager(
 						getApplicationContext());
 				preferenceManager.putPINValue(pin);
-				Toast.makeText(getApplicationContext(), "PIN Saved" ,
+				Toast.makeText(getApplicationContext(), "PIN Saved",
 						Toast.LENGTH_LONG).show();
 
 			}
