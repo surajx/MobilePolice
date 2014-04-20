@@ -2,6 +2,7 @@ package com.pyro.mobilepolice.mission;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.pyro.mobilepolice.data.MissionRequest;
 import com.pyro.mobilepolice.gps.GPSTracker;
@@ -29,6 +30,10 @@ public class GPSLocateMission implements Mission {
 					+ "\nLong: " + longitude;
 			Utils.sendSMS(senderNumber, message);
 		} else {
+			Toast toast = Toast.makeText(context,
+					"Unable to get GPS Location at this moment.",
+					Toast.LENGTH_SHORT);
+			toast.show();
 			Log.d(TAG, "Unable to get GPS Location at this moment.");
 		}
 	}

@@ -1,27 +1,23 @@
 package com.pyro.mobilepolice.mission;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.content.Intent;
 
+import com.pyro.mobilepolice.activity.MyDialogueActivity;
 import com.pyro.mobilepolice.data.MissionRequest;
 
 public class PlayRingtoneMission implements Mission {
 
+	@SuppressLint("InlinedApi")
 	@Override
 	public void execute(Context context, MissionRequest mRequest) {
-		Uri notification = RingtoneManager
-				.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-		AudioManager mAudioManager = (AudioManager) context
-				.getSystemService(Context.AUDIO_SERVICE);
-		mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-		mAudioManager.setStreamVolume(AudioManager.STREAM_RING, 100,
-				AudioManager.FLAG_PLAY_SOUND
-						| AudioManager.FLAG_ALLOW_RINGER_MODES);
-		Ringtone r = RingtoneManager.getRingtone(context, notification);
-		r.play();
+		Intent i = new Intent(context, MyDialogueActivity.class);
+		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+				| Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_SINGLE_TOP
+				| Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+				| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		context.getApplicationContext().startActivity(i);
 	}
-
 }

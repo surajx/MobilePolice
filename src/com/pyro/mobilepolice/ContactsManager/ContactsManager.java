@@ -4,22 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import jxl.CellView;
-import jxl.Workbook;
-import jxl.WorkbookSettings;
-import jxl.format.UnderlineStyle;
-import jxl.write.Label;
 import jxl.write.WritableCellFormat;
-import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Environment;
 import android.provider.ContactsContract;
 
 import com.pyro.mobilepolice.beans.Contact;
@@ -45,7 +37,7 @@ public class ContactsManager {
 
 	public void write(List<Contact> contactList) throws IOException,
 			WriteException {
-		
+
 		int maxNumbers = 0;
 		for (Contact contact : contactList) {
 			int size = contact.getPhoneNumbers().size();
@@ -53,13 +45,14 @@ public class ContactsManager {
 				maxNumbers = size;
 			}
 		}
-		String[]  headers= new String[maxNumbers+1];
-		headers[0]= "name";
+		String[] headers = new String[maxNumbers + 1];
+		headers[0] = "name";
 		for (int i = 1; i <= maxNumbers; i++) {
-			headers[i]= "Phone Number";
+			headers[i] = "Phone Number";
 		}
 		File file = ExcelWriter.createFile("contacts.xls");
-		WritableWorkbook workbook = ExcelWriter.createWorkBook(file,"Contacts");
+		WritableWorkbook workbook = ExcelWriter
+				.createWorkBook(file, "Contacts");
 		WritableSheet excelSheet = workbook.getSheet(0);
 		ExcelWriter.createLabel(excelSheet, headers);
 		createContent(excelSheet, contactList);
@@ -67,8 +60,6 @@ public class ContactsManager {
 		workbook.write();
 		workbook.close();
 	}
-
-	
 
 	private void createContent(WritableSheet sheet, List<Contact> contactList)
 			throws WriteException, RowsExceededException {
@@ -86,8 +77,6 @@ public class ContactsManager {
 
 	}
 
-	
-
 	// private void addNumber(WritableSheet sheet, int column, int row,
 	// Integer integer) throws WriteException, RowsExceededException {
 	// Number number;
@@ -95,8 +84,6 @@ public class ContactsManager {
 	//
 	// sheet.addCell(number);
 	// }
-
-	
 
 	public List<Contact> fetchContacts(Context context) {
 		List<Contact> contacts = new ArrayList<Contact>();

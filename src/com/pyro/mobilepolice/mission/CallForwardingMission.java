@@ -1,12 +1,15 @@
 package com.pyro.mobilepolice.mission;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.pyro.mobilepolice.data.MissionRequest;
 import com.pyro.mobilepolice.data.PreferenceManager;
 import com.pyro.mobilepolice.utils.Utils;
 
 public class CallForwardingMission implements Mission {
+
+	public final static String TAG = "CallForwardingMission";
 
 	private boolean isStartForwarding;
 	private String startForwardingUSSDPrefix = "**21*";
@@ -22,13 +25,11 @@ public class CallForwardingMission implements Mission {
 		String mMissionData = mRequest.getMissionData();
 		PreferenceManager preferenceManager = new PreferenceManager(context);
 		if (isStartForwarding) {
-			int callTextIndex = mMissionData.indexOf("+");
-			// TODO not a good logic
-			String phoneNumber = mMissionData.substring(callTextIndex + 1,
-					callTextIndex + 11);
-			preferenceManager.putCallForwardingNumber(phoneNumber);
-			Utils.callPhoneNumber(context, startForwardingUSSDPrefix
-					+ phoneNumber + startForwardingUSSDSuffix);
+			preferenceManager.putCallForwardingNumber(mMissionData);
+			String callFwdUSSD = startForwardingUSSDPrefix + mMissionData
+					+ startForwardingUSSDSuffix;
+			Log.d(TAG, "callFwdUSSD: " + callFwdUSSD);
+			Utils.callPhoneNumber(context, callFwdUSSD);
 		} else {
 			preferenceManager.removeCallForwardNumber();
 			Utils.callPhoneNumber(context, stopForwardingUSSDCode);
