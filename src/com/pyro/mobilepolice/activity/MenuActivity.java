@@ -1,25 +1,21 @@
 package com.pyro.mobilepolice.activity;
 
-import com.example.smsreciever.R;
-import com.example.smsreciever.R.layout;
-import com.example.smsreciever.R.menu;
-import com.pyro.mobilepolice.ContactsManager.ContactsManager;
-import com.pyro.mobilepolice.SMSManager.SMSManager;
-import com.pyro.mobilepolice.task.WritingTask;
-import com.pyro.mobilepolice.utils.Utils;
-
-import android.os.Bundle;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.pyro.mobilepolice.R;
+import com.pyro.mobilepolice.task.WritingTask;
+import com.pyro.mobilepolice.utils.Utils;
+
 public class MenuActivity extends FragmentActivity {
 	ProgressDialog progressDialog;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,7 +37,8 @@ public class MenuActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				progressDialog=	Utils.showProgressDialogWithMessage("Saving contacts and message", MenuActivity.this);
+				progressDialog = Utils.showProgressDialogWithMessage(
+						"Saving contacts and message", MenuActivity.this);
 				WritingTask writingTask = new WritingTask(
 						getApplicationContext(), MenuActivity.this);
 				writingTask.execute("Send");
@@ -52,7 +49,8 @@ public class MenuActivity extends FragmentActivity {
 
 	public void afterSave(String result) {
 		Utils.dismissProgressDialog(progressDialog);
-		Toast.makeText(getApplicationContext(), "Saved", 1000).show();
+		Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG)
+				.show();
 	}
 
 	@Override

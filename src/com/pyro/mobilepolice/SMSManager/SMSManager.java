@@ -10,12 +10,10 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
-import com.pyro.mobilepolice.beans.Contact;
 import com.pyro.mobilepolice.beans.SMS;
 import com.pyro.mobilepolice.utils.ExcelWriter;
 
