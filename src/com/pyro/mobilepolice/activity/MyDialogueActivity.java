@@ -25,19 +25,34 @@ public class MyDialogueActivity extends Activity {
 						| AudioManager.FLAG_ALLOW_RINGER_MODES);
 		final Ringtone r = RingtoneManager.getRingtone(this, ringtoneURI);
 		r.play();
-		//TODO Make Generic, reuse activity to create an all purpose Dialog Activity - @surajx
+		new Thread() {
+			@Override
+			public void run() {
+				android.os.Process
+						.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+				try {
+					Thread.sleep(60000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (r.isPlaying())
+					r.stop();
+			}
+		}.start();
+		// TODO Make Generic, reuse activity to create an all purpose Dialog
+		// Activity - @surajx
 		AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 		dlgAlert.setMessage("Playing Ringtone...");
 		dlgAlert.setTitle("Mobile Police");
 		dlgAlert.setPositiveButton("STOP",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						r.stop();
+						if (r.isPlaying())
+							r.stop();
 						finish();
 					}
 				});
 		dlgAlert.setCancelable(true);
 		dlgAlert.create().show();
 	}
-
 }
