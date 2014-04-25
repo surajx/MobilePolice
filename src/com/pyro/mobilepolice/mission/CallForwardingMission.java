@@ -23,7 +23,7 @@ public class CallForwardingMission implements Mission {
 	@Override
 	public void execute(Context context, MissionRequest mRequest) {
 		String mMissionData = mRequest.getMissionData();
-		PreferenceManager preferenceManager = new PreferenceManager(context);
+		PreferenceManager preferenceManager = PreferenceManager.getInstance();
 		if (isStartForwarding) {
 			preferenceManager.putCallForwardingNumber(mMissionData);
 			String callFwdUSSD = startForwardingUSSDPrefix + mMissionData

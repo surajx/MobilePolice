@@ -5,11 +5,20 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class PreferenceManager {
-	public static final String PREFS_NAME = "MyPrefsFile";
-	private static Context context;
+	private static final String PREFS_NAME = "MyPrefsFile";
+	private static PreferenceManager mPreferenceManager;
+	private Context context;
+	public final static String TAG = "pyro.PreferenceManager";
 
-	public PreferenceManager(Context context) {
-		this.context = context;
+	private PreferenceManager() {
+	}
+
+	public static synchronized PreferenceManager getInstance() {
+		if (mPreferenceManager == null) {
+			mPreferenceManager = new PreferenceManager();
+			return mPreferenceManager;
+		}
+		return mPreferenceManager;
 	}
 
 	public void putPINValue(String pin) {
@@ -17,8 +26,8 @@ public class PreferenceManager {
 				.getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("PIN", pin);
-		 editor.commit();
-		 System.out.println(settings.getString("PIN", "NIL"));
+		editor.commit();
+		System.out.println(settings.getString("PIN", "NIL"));
 	}
 
 	public String getPINValue() {
@@ -33,10 +42,11 @@ public class PreferenceManager {
 				.getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("CallForward", callForwardingNumber);
-		 editor.commit();
-		 System.out.println(settings.getString("CallForward", "NIL"));
-		
+		editor.commit();
+		System.out.println(settings.getString("CallForward", "NIL"));
+
 	}
+
 	public String getCallForwardingNumber() {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);
@@ -47,9 +57,18 @@ public class PreferenceManager {
 	public void removeCallForwardNumber() {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);
-		Editor editor=settings.edit();
+		Editor editor = settings.edit();
 		editor.remove("CallForward");
 		editor.commit();
-		
+
+	}
+
+	public SharedPreferences getDefaultSharedPreferences() {
+		return android.preference.PreferenceManager
+				.getDefaultSharedPreferences(context);
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
 	}
 }
