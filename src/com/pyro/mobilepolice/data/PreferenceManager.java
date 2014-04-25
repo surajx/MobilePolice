@@ -14,10 +14,8 @@ public class PreferenceManager {
 	}
 
 	public static synchronized PreferenceManager getInstance() {
-		if (mPreferenceManager == null) {
+		if (mPreferenceManager == null)
 			mPreferenceManager = new PreferenceManager();
-			return mPreferenceManager;
-		}
 		return mPreferenceManager;
 	}
 
