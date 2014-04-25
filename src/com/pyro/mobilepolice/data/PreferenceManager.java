@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.pyro.mobilepolice.utils.Utils;
+
 public class PreferenceManager {
 	private static final String PREFS_NAME = "MyPrefsFile";
 	private static PreferenceManager mPreferenceManager;
@@ -23,7 +25,8 @@ public class PreferenceManager {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
-		editor.putString("PIN", pin);
+		String encryptedPIN = Utils.encryptPIN(pin);
+		editor.putString("PIN", encryptedPIN);
 		editor.commit();
 		System.out.println(settings.getString("PIN", "NIL"));
 	}
@@ -31,8 +34,8 @@ public class PreferenceManager {
 	public String getPINValue() {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);
-		String pin = settings.getString("PIN", "NIL");
-		return pin;
+		String encryptedPIN = settings.getString("PIN", "NIL");
+		return Utils.decryptPIN(encryptedPIN);
 	}
 
 	public void putCallForwardingNumber(String callForwardingNumber) {
