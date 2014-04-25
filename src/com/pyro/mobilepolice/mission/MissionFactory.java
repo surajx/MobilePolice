@@ -18,7 +18,7 @@ public class MissionFactory {
 		} else if (Const.MISSION_IDENTIFIER_LOCATE.equals(missionIdentifier)) {
 			return new GPSLocateMission();
 		}
-		// TODO: add other mission types.
+		//Add other mission types.
 		return null;
 	}
 

@@ -24,8 +24,9 @@ public class PinChangeActivity extends FragmentActivity {
 			public void onClick(View arg0) {
 				EditText txtPin = (EditText) findViewById(R.id.txtPIN);
 				String pin = txtPin.getText().toString();
-				PreferenceManager preferenceManager = new PreferenceManager(
-						getApplicationContext());
+				PreferenceManager preferenceManager = PreferenceManager
+						.getInstance();
+				preferenceManager.setContext(getApplicationContext());
 				preferenceManager.putPINValue(pin);
 				Toast.makeText(getApplicationContext(), "PIN Saved",
 						Toast.LENGTH_LONG).show();

@@ -90,11 +90,9 @@ public class Utils {
 		}
 	}
 
-	public static boolean authenticateRequest(String pin, Context context) {
-		Log.d(TAG, "pin" + pin);
-		PreferenceManager preferenceManager = new PreferenceManager(context);
+	public static boolean authenticateRequest(String pin) {
+		PreferenceManager preferenceManager = PreferenceManager.getInstance();
 		String savedPin = preferenceManager.getPINValue();
-		Log.e(TAG, "savedPin" + savedPin);
 		return (pin.equalsIgnoreCase(savedPin));
 	}
 
