@@ -24,6 +24,17 @@ public class PinChangeActivity extends FragmentActivity {
 			public void onClick(View arg0) {
 				EditText txtPin = (EditText) findViewById(R.id.txtPIN);
 				String pin = txtPin.getText().toString();
+				if (pin == null || pin.isEmpty()) {
+					Toast.makeText(getApplicationContext(),
+							"You must enter a PIN.", Toast.LENGTH_LONG).show();
+					return;
+				}
+				if (pin.length() < 4) {
+					Toast.makeText(getApplicationContext(),
+							"PIN must be 4 or more characters long.",
+							Toast.LENGTH_LONG).show();
+					return;
+				}
 				PreferenceManager preferenceManager = PreferenceManager
 						.getInstance();
 				preferenceManager.setContext(getApplicationContext());

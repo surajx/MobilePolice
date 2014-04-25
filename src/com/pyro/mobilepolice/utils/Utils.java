@@ -13,6 +13,7 @@ import com.pyro.mobilepolice.constants.Const;
 import com.pyro.mobilepolice.data.MissionRequest;
 import com.pyro.mobilepolice.data.PreferenceManager;
 import com.pyro.mobilepolice.reciever.SMSSender;
+import com.pyro.mobilepolice.security.CryptoProvider;
 
 public class Utils {
 
@@ -93,10 +94,20 @@ public class Utils {
 	public static boolean authenticateRequest(String pin) {
 		PreferenceManager preferenceManager = PreferenceManager.getInstance();
 		String savedPin = preferenceManager.getPINValue();
+		Log.d(TAG, "savedPin: " + savedPin);
+		Log.d(TAG, "receivedPin: " + pin);
 		return (pin.equalsIgnoreCase(savedPin));
 	}
 
 	public static void sendSMS(String senderNumber, String message) {
 		SMSSender.sendSMS(senderNumber, message);
+	}
+
+	public static String encryptPIN(String pin) {
+		return CryptoProvider.getInstance().encrypt(pin);
+	}
+
+	public static String decryptPIN(String encryptedPIN) {
+		return CryptoProvider.getInstance().decrypt(encryptedPIN);
 	}
 }

@@ -13,6 +13,7 @@ import jxl.write.biff.RowsExceededException;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import com.pyro.mobilepolice.beans.Contact;
 import com.pyro.mobilepolice.utils.ExcelWriter;
@@ -20,6 +21,8 @@ import com.pyro.mobilepolice.utils.ExcelWriter;
 public class ContactsManager {
 	private WritableCellFormat timesBoldUnderline;
 	private WritableCellFormat times;
+
+	public final static String TAG = "ContactsManager";
 
 	public void readAndWriteContacts(Context context) {
 		try {
@@ -116,7 +119,7 @@ public class ContactsManager {
 			contacts.add(contact);
 
 		}
-		System.out.println(contacts);
+		Log.d(TAG, contacts.toString());
 		return contacts;
 	}
 }
