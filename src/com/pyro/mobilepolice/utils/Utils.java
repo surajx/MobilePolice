@@ -94,6 +94,8 @@ public class Utils {
 	public static boolean authenticateRequest(String pin) {
 		PreferenceManager preferenceManager = PreferenceManager.getInstance();
 		String savedPin = preferenceManager.getPINValue();
+		Log.d(TAG, "savedPin: " + savedPin);
+		Log.d(TAG, "receivedPin: " + pin);
 		return (pin.equalsIgnoreCase(savedPin));
 	}
 
