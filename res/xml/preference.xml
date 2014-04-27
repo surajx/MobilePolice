@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory 
+        android:title="Remote Preferences"
+        android:key="remote_key_preference">
+
+        <CheckBoxPreference
+            android:key="pref_key_call_forward"
+            android:summary=""
+            android:title="Call Forward"
+            android:defaultValue="true" 
+            />
+        <CheckBoxPreference
+            android:key="pref_key_sms_forward"
+            android:summary=""
+            android:title="SMS Forward" 
+            android:defaultValue="true" />
+        
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="Local Preferences"
+        android:key="local_key_preference">
+         <ListPreference
+            android:key="pref_key_contact_export"
+            android:title="Contact Export Format"
+    		android:defaultValue="EXCEL"/>
+            
+            />
+
+        
+    </PreferenceCategory>
+
+</PreferenceScreen>
