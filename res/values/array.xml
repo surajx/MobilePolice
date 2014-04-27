@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="excelFormat">
+        <item>EXCEL</item>
+        <item>CSV</item>
+    </string-array>
+    <string-array name="navDrawerOptions">
+        <item>Home</item>
+        <item>Save Pin</item>
+        <item>Export Local Contacts</item>
+        <item>Export SMS</item>
+        <item>Call Forward</item>        
+        <item>Ring Phone</item>
+        <item>Call Back</item>
+        <item>Get Location</item>
+        <item>Settings</item>
+    </string-array>
+</resources>
