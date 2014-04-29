@@ -15,4 +15,18 @@
         <item>Get Location</item>
         <item>Settings</item>
     </string-array>
+    
+    
+    <string-array name="fragmentDescriptions">
+        <item>Home</item>
+        <item>SavePin</item>
+        <item>ExportLocalContacts</item>
+        <item>ExportSMS</item>
+        <item>CallForward</item>        
+        <item>RingPhone</item>
+        <item>CallBack</item>
+        <item>GetLocation</item>
+        <item>Settings</item>
+    </string-array>
+    
 </resources>
