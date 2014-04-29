@@ -32,10 +32,11 @@ public class MainActivity extends ActionBarActivity {
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private ListView mDrawerList;
-	private CharSequence mTitle;
+	//private String[] fragmentDescription = getResources().getStringArray(R.array.fragmentDescriptions);
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_drawer);
 		PreferenceManager.setDefaultValues(this, R.xml.preference, false);
@@ -43,47 +44,54 @@ public class MainActivity extends ActionBarActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-		String[] navDrawerOptions = getResources().getStringArray(
-				R.array.navDrawerOptions);
+		String[] navDrawerOptions = getResources().getStringArray(R.array.navDrawerOptions);
 		int[] iconList = new int[] { R.drawable.ic_action_save,
 				R.drawable.ic_action_save, R.drawable.ic_action_save,
 				R.drawable.ic_action_save, R.drawable.ic_action_save,
 				R.drawable.ic_action_save, R.drawable.ic_action_save,
 				R.drawable.ic_action_save, R.drawable.ic_action_save };
 
-		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.icon, /* nav drawer icon to replace 'Up' caret */
-		R.string.nav_drawer_open, /* "open drawer" description */
-		R.string.nav_drawer_close /* "close drawer" description */
+		mDrawerToggle = new ActionBarDrawerToggle
+							(this, /* host Activity */
+							mDrawerLayout, /* DrawerLayout object */
+							R.drawable.icon, /* nav drawer icon to replace 'Up' caret */
+							R.string.nav_drawer_open, /* "open drawer" description */
+							R.string.nav_drawer_close /* "close drawer" description */
 		) {
 
 			/** Called when a drawer has settled in a completely closed state. */
-			public void onDrawerClosed(View view) {
+			public void onDrawerClosed(View view) 
+			{
 				super.onDrawerClosed(view);
-				getSupportActionBar().setTitle("Mobile Police");
+				//getSupportActionBar().setTitle("Mobile Police");
 			}
 
 			/** Called when a drawer has settled in a completely open state. */
-			public void onDrawerOpened(View drawerView) {
+			public void onDrawerOpened(View drawerView) 
+			{
 				super.onDrawerOpened(drawerView);
-				getSupportActionBar().setTitle("Mobile Police");
+				//getSupportActionBar().setTitle("Mobile Police");
 			}
 
 		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		NavListAdapter navListAdapter = new NavListAdapter(navDrawerOptions,
-				iconList);
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		NavListAdapter navListAdapter = new NavListAdapter(navDrawerOptions,iconList);
 		mDrawerList.setAdapter(navListAdapter);
 		mDrawerList.setClickable(true);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		getSupportActionBar().setHomeButtonEnabled(true);
+		
 		// getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//load home screen fragment
+		FragmentManager fm = getSupportFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		ft.add(R.id.content_frame, new HomeFragment());
+		ft.commit();
+		
 	}
 
-	private class DrawerItemClickListener implements
-			ListView.OnItemClickListener {
+	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -95,45 +103,66 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 
-	public void implementNavigation(int position) {
+	private Boolean isFragmentAlreadyLoaded(String tag)
+	{
+		Boolean fragmentLoaded = false;
+		FragmentManager fm = getSupportFragmentManager();
+		Fragment frag = fm. findFragmentByTag(tag);
+		if(frag != null)
+		{fragmentLoaded = true;}
+		return fragmentLoaded;
+	}
+	
+	
+	public void implementNavigation(int position) 
+	{
 		Fragment fragment = null;
-
+		String description = null;
+		String[] fragmentDescription = getResources().getStringArray(R.array.fragmentDescriptions);
+		//Boolean fragmentLoaded = isFragmentAlreadyLoaded(fragmentDescription[position]);
+		
+		FragmentManager fm = getSupportFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		Integer count = fm.getBackStackEntryCount();
+		
+		if(count>0)
+		{fm.popBackStack();}
+		
 		switch (position) {
 		case 0:
-			fragment = new SavePinFragment();
+			fm.popBackStack(fragmentDescription[position],1);
 			break;
 		case 1:
-			fragment = new SavePinFragment();
+			ft.replace(R.id.content_frame, new SavePinFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();	
 			break;
 		case 2:
-			fragment = new SavePinFragment();
-			break;
+			ft.replace(R.id.content_frame, new ExportLocalFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();	
+			break;			
 		case 3:
-			fragment = new SavePinFragment();
+			ft.replace(R.id.content_frame, new ExportSmsFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();
 			break;
 		case 4:
-			fragment = new SavePinFragment();
+			ft.replace(R.id.content_frame, new CallForwardFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();
 			break;
 		case 5:
-			fragment = new SavePinFragment();
+			ft.replace(R.id.content_frame, new RingPhoneFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();
+			break;
+		case 6:
+			ft.replace(R.id.content_frame, new CallBackFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();
+			break;
+		case 7:
+			ft.replace(R.id.content_frame, new GetLocationFragment(),fragmentDescription[position]).addToBackStack(null);
+			ft.commit();
 			break;
 
 		default:
 			break;
-		}
-
-		if (fragment != null) {
-			FragmentManager fragmentManager = getSupportFragmentManager();
-			FragmentTransaction ft = fragmentManager.beginTransaction();
-			ft.replace(R.id.content_frame, fragment);
-			ft.commit();
-			// update selected item and title, then close the drawer
-			mDrawerList.setItemChecked(position, true);
-			mDrawerList.setSelection(position);
-			mDrawerLayout.closeDrawer(mDrawerList);
-		} else {
-			// error in creating fragment
-			Log.e("MainActivity", "Error in creating fragment");
 		}
 
 		mDrawerLayout.closeDrawer(mDrawerList);
@@ -141,33 +170,39 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
+	protected void onPostCreate(Bundle savedInstanceState) 
+	{
 		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
 	}
 
 	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
+	public void onConfigurationChanged(Configuration newConfig) 
+	{
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		if (mDrawerToggle.onOptionsItemSelected(item)) 
+		{
 			return true;
 		}
 		super.onOptionsItemSelected(item);
 
-		switch (item.getItemId()) {
+		switch (item.getItemId()) 
+		{
 
 		case (R.id.action_settings):
 			Intent intent = new Intent(this,
