@@ -3,8 +3,24 @@
 
     <string name="app_name">Mobile Police</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_start">Mobile Police</string>
     <string name="title_activity_menu">Mobile Police</string>
+    <string name="nav_drawer_open">Open</string>
+    <string name="nav_drawer_close">Close</string>
+    
+    <string name="frag_remote_phone_header">Remote Phone Number</string>
+    <string name="frag_remote_pin_header">Remote Phone Pin Number</string>
+    <string name="frag_target_phone_header">Target Phone Number</string>
+    
+    
+    <string name="navHomeText">Home</string>
+    <string name="navSavePinText">Save Pin</string>
+    <string name="navExportContactText">Export Local Contacts</string>
+    <string name="navExportSMSText">Export SMS</string>
+    <string name="navCallForwardText">Call Forward</string>
+    <string name="navRingPhoneText">Ring Phone</string>
+    <string name="navCallBackText">Call Back</string>
+    <string name="navGetLocationText">Get Location</string>
+    <string name="navSettingText">Settings</string>
 
 </resources>
