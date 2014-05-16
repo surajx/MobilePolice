@@ -6,24 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <!-- The main content view -->
-
-    <FrameLayout
+   <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        />
-    <!-- The navigation drawer -->
-
-    <ListView
+        android:layout_height="match_parent" />
+   <ListView
         android:id="@+id/left_drawer"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/nav_drawer_background"
-        android:choiceMode="singleChoice"
+        android:choiceMode="singleChoice" 
+        android:dividerHeight="0dp"
+		android:divider="@null"/>
+   
+<!-- @android:color/transparent #111 
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
         android:divider="#646161"
-        android:dividerHeight="0.1dp" 
-        />
-<!-- @android:color/transparent #111 -->
+        android:dividerHeight="0.1dp" -->
 </android.support.v4.widget.DrawerLayout>
