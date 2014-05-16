@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
    
-    
-   <color name="nav_drawer_background">#403c3c</color> 
-   <color name="nav_drawer_text">#ec7736</color>
+   <color name="nav_drawer_background1">#403c3c</color> 
+   <color name="nav_drawer_text1">#ec7736</color>
+   <color name="nav_drawer_background2">#237493</color> 
+   <color name="nav_drawer_background">#1f627f</color> 
+   <color name="nav_drawer_text">#ebf0f2</color>
+   <color name="general_text">#1f627f</color>
+   <color name="header_text">#4D6874</color>  
+   
+   
    <!--  <color name="pyro_background">#fbc3a4</color>#f0cdb9 -->
    
 </resources>

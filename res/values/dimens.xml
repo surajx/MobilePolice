@@ -3,5 +3,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-
+    <dimen name="fragment_descText_topMargin">10dp</dimen>
+	<dimen name="fragment_space_after_descText">25dp</dimen>
+	<dimen name="fragment_space_between_fields">10dp</dimen>
 </resources>

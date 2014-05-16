@@ -4,29 +4,18 @@
         <item>EXCEL</item>
         <item>CSV</item>
     </string-array>
+    
     <string-array name="navDrawerOptions">
-        <item>Home</item>
-        <item>Save Pin</item>
-        <item>Export Local Contacts</item>
-        <item>Export SMS</item>
-        <item>Call Forward</item>        
-        <item>Ring Phone</item>
-        <item>Call Back</item>
-        <item>Get Location</item>
-        <item>Settings</item>
+        <item>@string/navHomeText</item>
+        <item>@string/navSavePinText</item>
+        <item>@string/navExportContactText</item>
+        <item>@string/navExportSMSText</item>
+        <item>@string/navCallForwardText</item>
+        <item>@string/navRingPhoneText</item>
+        <item>@string/navCallBackText</item>
+        <item>@string/navGetLocationText</item>
+        <item>@string/navSettingText</item>
     </string-array>
     
-    
-    <string-array name="fragmentDescriptions">
-        <item>Home</item>
-        <item>SavePin</item>
-        <item>ExportLocalContacts</item>
-        <item>ExportSMS</item>
-        <item>CallForward</item>        
-        <item>RingPhone</item>
-        <item>CallBack</item>
-        <item>GetLocation</item>
-        <item>Settings</item>
-    </string-array>
     
 </resources>

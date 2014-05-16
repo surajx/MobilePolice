@@ -4,16 +4,28 @@
         android:title="Remote Preferences"
         android:key="remote_key_preference">
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="pref_key_call_forward"
             android:summary=""
             android:title="Call Forward"
-            android:defaultValue="true" 
-            />
-        <CheckBoxPreference
-            android:key="pref_key_sms_forward"
+            android:defaultValue="true" />
+        
+        <SwitchPreference
+            android:key="pref_key_ring_phone"
             android:summary=""
-            android:title="SMS Forward" 
+            android:title="Ring Phone" 
+            android:defaultValue="true" />
+        
+        <SwitchPreference
+        	android:key="pref_key_call_back"
+            android:summary=""
+            android:title="Call Back" 
+            android:defaultValue="true" />
+        
+        <SwitchPreference
+        	android:key="pref_key_get_location"
+            android:summary=""
+            android:title="Get Location" 
             android:defaultValue="true" />
         
     </PreferenceCategory>
