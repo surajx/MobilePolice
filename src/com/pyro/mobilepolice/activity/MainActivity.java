@@ -1,5 +1,6 @@
 package com.pyro.mobilepolice.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -19,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -69,7 +71,10 @@ public class MainActivity extends ActionBarActivity implements HomeFragment.OnHo
 			}
 
 			public void onDrawerOpened(View drawerView) {
+				InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+			    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 				super.onDrawerOpened(drawerView);
+				
 			}
 
 		};
