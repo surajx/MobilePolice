@@ -49,10 +49,15 @@ public class RemoteFragment extends Fragment {
 		EditText etPin = (EditText) getActivity().findViewById(R.id.pinNumber);
 		final String smsMessage;
 
-		String htmlFromPhoneHeader = "<u>" + fromPhoneHeader + "</u>";
-		String htmlToPhoneHeader = "<u>" + toPhoneHeader + "</u>";
-		String htmlPinHeader = "<u>" + pinHeader + "</u>";
+		//String htmlFromPhoneHeader = "<u>" + fromPhoneHeader + "</u>";
+		//String htmlToPhoneHeader = "<u>" + toPhoneHeader + "</u>";
+		//String htmlPinHeader = "<u>" + pinHeader + "</u>";
+		
+		String htmlFromPhoneHeader = fromPhoneHeader;
+		String htmlToPhoneHeader = toPhoneHeader;
+		String htmlPinHeader = pinHeader;
 
+		
 		tvFromPhone.setText(Html.fromHtml(htmlFromPhoneHeader));
 		tvToPhone.setText(Html.fromHtml(htmlToPhoneHeader));
 		tvPin.setText(Html.fromHtml(htmlPinHeader));

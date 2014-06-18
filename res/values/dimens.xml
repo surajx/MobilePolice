@@ -6,4 +6,6 @@
     <dimen name="fragment_descText_topMargin">10dp</dimen>
 	<dimen name="fragment_space_after_descText">25dp</dimen>
 	<dimen name="fragment_space_between_fields">10dp</dimen>
+	<dimen name="fragment_info_font">17sp</dimen>
+	<dimen name="fragment_header_font">20sp</dimen>
 </resources>

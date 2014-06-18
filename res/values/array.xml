@@ -14,7 +14,6 @@
         <item>@string/navRingPhoneText</item>
         <item>@string/navCallBackText</item>
         <item>@string/navGetLocationText</item>
-        <item>@string/navSettingText</item>
     </string-array>
     
     

@@ -23,14 +23,16 @@
                 android:layout_marginTop="@dimen/fragment_descText_topMargin"
                 android:text="Initiate a call back from a remote mobile which has Mobile Police configured.
 Enter the pin number and phone number of the remote mobile. Also enter the phone number of the mobile to intiate the call to and hit 'Initiate Call Back'."
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/fragment_info_font"
                 android:textColor="@color/general_text" />
 
             <Button
                 android:id="@+id/btnInitiate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/general_text" />
+                android:textColor="@color/general_text"
+                android:background="@drawable/actionbuttonbg" 
+                android:textSize="@dimen/fragment_header_font"/>
             
         </LinearLayout>
 

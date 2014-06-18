@@ -15,7 +15,7 @@
     
     <string name="navHomeText">Home</string>
     <string name="navSavePinText">Save Pin</string>
-    <string name="navExportContactText">Export Local Contacts</string>
+    <string name="navExportContactText">Export Contacts</string>
     <string name="navExportSMSText">Export SMS</string>
     <string name="navCallForwardText">Call Forward</string>
     <string name="navRingPhoneText">Ring Phone</string>

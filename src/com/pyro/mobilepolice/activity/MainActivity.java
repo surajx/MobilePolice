@@ -171,9 +171,6 @@ public class MainActivity extends ActionBarActivity {
 			fragment = remoteFragmentClass(navDrawerOptions[position]);
 			
 		}
-		else if (navDrawerOptions[position].equals(getResources().getString(R.string.navSettingText))) {
-			
-		}
 		
 		if(home == false)
 		{

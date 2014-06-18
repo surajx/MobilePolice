@@ -30,7 +30,7 @@ public class SettingsActivity extends PreferenceActivity{
 				title.setTypeface(mTypeface);
 				title.setTextSize(22);
 			}
-		
+			
 	}
 
 	
