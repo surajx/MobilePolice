@@ -29,7 +29,9 @@ import android.widget.Toast;
 
 import com.pyro.mobilepolice.R;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements HomeFragment.OnHomeSelectionListener 
+{
+
 
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -38,6 +40,13 @@ public class MainActivity extends ActionBarActivity {
 	// private String[] fragmentDescription =
 	// getResources().getStringArray(R.array.fragmentDescriptions);
 
+	public void onMenuButtonSelected(int position)
+	{
+		implementNavigation(position);
+	}
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

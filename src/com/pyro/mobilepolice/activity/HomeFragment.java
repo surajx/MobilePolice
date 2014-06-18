@@ -1,5 +1,6 @@
 package com.pyro.mobilepolice.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
 				// TODO Auto-generated method stub
 				
 				Integer position = findPosition(btnSavePin.getText().toString());
-				
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 		btnCallBack.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +56,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Integer position = findPosition(btnCallBack.getText().toString());
-
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 		btnCallForward.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Integer position = findPosition(btnCallForward.getText().toString());
-
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 		btnExportContact.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Integer position = findPosition(btnExportContact.getText().toString());
-
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 		btnExportSMS.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +83,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Integer position = findPosition(btnExportSMS.getText().toString());
-
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 		btnGetLocation.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +92,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Integer position = findPosition(btnGetLocation.getText().toString());
-
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 		btnRingPhone.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +101,7 @@ public class HomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Integer position = findPosition(btnRingPhone.getText().toString());
-
+				mCallback.onMenuButtonSelected(position);
 			}
 		});
 	
@@ -108,80 +109,35 @@ public class HomeFragment extends Fragment {
 
 	private Integer findPosition(String text) {
 		String[] allOptions = getResources().getStringArray(R.array.navDrawerOptions);
-		int position = 1;
-		for(int i = 1;i<=allOptions.length;i++)
+		int position = 0;
+		for(int i = 0;i<allOptions.length;i++)
 		{
 			if(allOptions[i].equals(text))
-			{	position = i;	}
+			{	position = i;	
+				break;
+			}
 			
 		}
 		return position;
-		
-		
 	}
 	
-	public void implementNavigation(int position) {
-		Fragment fragment = null;
-		Boolean home = false;
-		
-		String[] navDrawerOptions = getResources().getStringArray(R.array.navDrawerOptions);
-		String fragmentDescription = navDrawerOptions[position].replaceAll("\\s+","");
-		
-		FragmentManager fm = getSupportFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		Integer count = fm.getBackStackEntryCount();
-		
-		if (count > 0) {fm.popBackStack();}
-		
-		if (navDrawerOptions[position].equals(getResources().getString(R.string.navHomeText))) {
-			fm.popBackStack(fragmentDescription, 1);
-			home = true;
-		}
-		else if (navDrawerOptions[position].equals(getResources().getString(R.string.navSavePinText))) {
-			fragment = new SavePinFragment();
-		}
-		else if ((navDrawerOptions[position].equals(getResources().getString(R.string.navExportContactText))) 
-			| (navDrawerOptions[position].equals(getResources().getString(R.string.navExportSMSText))))
-		{
-			fragment = localFragmentClass(navDrawerOptions[position]);
-		}
-		else if (
-		  (navDrawerOptions[position].equals(getResources().getString(R.string.navCallForwardText)))
-		| (navDrawerOptions[position].equals(getResources().getString(R.string.navRingPhoneText)))
-		| (navDrawerOptions[position].equals(getResources().getString(R.string.navCallBackText)))
-		| (navDrawerOptions[position].equals(getResources().getString(R.string.navGetLocationText)))
-		)
-		{
-			fragment = remoteFragmentClass(navDrawerOptions[position]);
-			
-		}
-		
-		if(home == false)
-		{
-			ft.replace(R.id.content_frame, fragment,
-					fragmentDescription).addToBackStack(null);
-			ft.commit();
-		}
-		
-		
-	}
+	OnHomeSelectionListener mCallback;
+	
+	 public interface OnHomeSelectionListener {
+	        public void onMenuButtonSelected(int position);
+	 }
 
-	private RemoteFragment remoteFragmentClass(String fragmentDescription)
-	{
-		RemoteFragment frag = new RemoteFragment();
-		Bundle bundle = new Bundle();
-		bundle.putString("func", fragmentDescription);
-		frag.setArguments(bundle);
-		return frag;
-	}
-	
-	private LocalFragment localFragmentClass(String fragmentDescription)
-	{
-		LocalFragment frag = new LocalFragment();
-		Bundle bundle = new Bundle();
-		bundle.putString("func", fragmentDescription);
-		frag.setArguments(bundle);
-		return frag;
-	}
-	
+	    @Override
+	public void onAttach(Activity activity) {
+	        super.onAttach(activity);
+	        
+	        // This makes sure that the container activity has implemented
+	        // the callback interface. If not, it throws an exception
+	        try {
+	            mCallback = (OnHomeSelectionListener) activity;
+	        } catch (ClassCastException e) {
+	            throw new ClassCastException(activity.toString()
+	                    + " must implement OnHomeSelectionListener");
+	        }
+	    }
 }
