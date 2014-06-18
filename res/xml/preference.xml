@@ -30,17 +30,4 @@
         
     </PreferenceCategory>
     
-    <PreferenceCategory 
-        android:title="Local Preferences"
-        android:key="local_key_preference">
-         <ListPreference
-            android:key="pref_key_contact_export"
-            android:title="Contact Export Format"
-    		android:defaultValue="EXCEL"/>
-            
-            />
-
-        
-    </PreferenceCategory>
-
 </PreferenceScreen>
