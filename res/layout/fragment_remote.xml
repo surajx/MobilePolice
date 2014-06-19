@@ -35,17 +35,17 @@
                 android:text="@string/frag_remote_phone_header"
                 android:textSize="@dimen/fragment_header_font"
                 android:textColor="@color/header_text" />
+
             <EditText
                 android:id="@+id/lostPhoneNumber"
-                
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/fragment_space_left_editText"
+                android:background="@drawable/input9patch"
                 android:ems="10"
                 android:inputType="phone"
-                android:layout_width="200dp"
-                android:background="@drawable/input9patch"
-                android:textSize="@dimen/fragment_info_font"
-                 />
+                android:maxLength="@integer/maxPhoneLength"
+                android:textSize="@dimen/fragment_info_font" />
 
             <TextView
                 android:id="@+id/pinNumberHeader"
@@ -59,13 +59,14 @@
 
             <EditText
                 android:id="@+id/pinNumber"
-                android:layout_marginLeft="@dimen/fragment_space_left_editText"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone"  
                 android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fragment_space_left_editText"
                 android:background="@drawable/input9patch"
-                android:textSize="@dimen/fragment_info_font"/>
+                android:ems="10"
+                android:inputType="phone"
+                android:maxLength="@integer/passwordLength"
+                android:textSize="@dimen/fragment_info_font" />
 
             <TextView
                 android:id="@+id/toPhoneHeader"
@@ -83,6 +84,7 @@
                 android:inputType="phone" 
                 android:layout_width="200dp"
                 android:background="@drawable/input9patch"
+                android:maxLength="@integer/maxPhoneLength"
                 android:textSize="@dimen/fragment_info_font"/>
 
             <Button
