@@ -1,77 +1,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content" >
 
     <TextView
-        android:id="@+id/textOptions"
+        android:id="@+id/textDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:text="Old Pin"
-        
-        android:textSize="@dimen/fragment_header_font"
-                android:textColor="@color/header_text" />
+        android:text="@string/pin_desc"
+        android:textColor="@color/header_text"
+        android:textSize="@dimen/fragment_header_font" />
 
     <EditText
         android:id="@+id/txtPIN"
-        
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtPIN1"
-        android:layout_alignRight="@+id/txtPIN1"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="Old Password"
-        android:inputType="numberPassword" 
         android:layout_width="200dp"
-                android:background="@drawable/input9patch"
-                android:textSize="@dimen/fragment_info_font">
-
-        <requestFocus />
-    </EditText>
-    
-     <TextView
-         android:id="@+id/textDescription"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_alignTop="@id/textOptions"
-         android:layout_marginLeft="15dp"
-         android:layout_marginTop="50dp"
-         android:text="New Pin"
-        android:textSize="@dimen/fragment_header_font"
-                android:textColor="@color/header_text" />
-     
-         <EditText
-             android:id="@+id/txtPIN1"
-             android:layout_width="200dp"
-             android:layout_height="wrap_content"
-             android:layout_alignTop="@id/txtPIN"
-             android:layout_marginTop="50dp"
-             android:layout_toRightOf="@id/textDescription"
-             android:background="@drawable/input9patch"
-             android:ems="10"
-             android:hint="New Password (min 4 digit long)"
-             android:inputType="numberPassword"
-             android:textSize="@dimen/fragment_info_font" >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/input9patch"
+        android:ems="10"
+        android:hint="Existing PIN"
+        android:inputType="numberPassword"
+        android:textSize="@dimen/fragment_info_font" >
 
         <requestFocus />
     </EditText>
 
-         <Button
-             android:id="@+id/btnDoSavePin"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignRight="@+id/txtPIN1"
-             android:layout_below="@+id/txtPIN1"
-             android:layout_marginRight="27dp"
-             android:layout_marginTop="38dp"
-             android:text="Save" 
-             android:textColor="@color/general_text"
-                android:textSize="@dimen/fragment_header_font" 
-                 android:background="@drawable/actionbuttonbg" />
-            <!--  android:background="@drawable/button_style" -->
-             
+    <EditText
+        android:id="@+id/txtPIN1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtPIN"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input9patch"
+        android:ems="10"
+        android:hint="New PIN"
+        android:inputType="numberPassword"
+        android:textSize="@dimen/fragment_info_font" >
+    </EditText>
+
+    <Button
+        android:id="@+id/btnDoSavePin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtPIN1"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/actionbuttonbg"
+        android:text="Save"
+        android:textColor="@color/general_text"
+        android:textSize="@dimen/fragment_header_font" />
+    <!-- android:background="@drawable/button_style" -->
 
 </RelativeLayout>

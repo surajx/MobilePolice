@@ -34,6 +34,15 @@ public class PreferenceManager {
 		Log.d(TAG, "encryptedPIN: " + settings.getString("PIN", "NIL"));
 	}
 
+	public boolean isPINNotSet() {
+		SharedPreferences settings = context
+				.getSharedPreferences(PREFS_NAME, 0);
+		String encryptedPIN = settings.getString("PIN", "NIL");
+		Log.d(TAG, "encryptedPIN: " + encryptedPIN);
+		return ("NIL".equals(encryptedPIN) || encryptedPIN == null || encryptedPIN
+				.isEmpty());
+	}
+
 	public String getPINValue() {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);

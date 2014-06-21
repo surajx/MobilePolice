@@ -44,6 +44,9 @@ public class MainActivity extends ActionBarActivity implements
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main_drawer);
+		com.pyro.mobilepolice.data.PreferenceManager preferenceManager = com.pyro.mobilepolice.data.PreferenceManager
+				.getInstance();
+		preferenceManager.setContext(getApplicationContext());
 		PreferenceManager.setDefaultValues(this, R.xml.preference, false);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);

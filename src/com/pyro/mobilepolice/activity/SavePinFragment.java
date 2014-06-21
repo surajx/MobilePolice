@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pyro.mobilepolice.R;
@@ -30,16 +31,45 @@ public class SavePinFragment extends Fragment {
 
 		super.onActivityCreated(savedInstanceState);
 		Button btnSave = (Button) getActivity().findViewById(R.id.btnDoSavePin);
+		final boolean isFirstPINSave = PreferenceManager.getInstance()
+				.isPINNotSet();
+		if (isFirstPINSave) {
+			((EditText) getActivity().findViewById(R.id.txtPIN))
+					.setVisibility(View.GONE);
+			((TextView) getActivity().findViewById(R.id.textOptions))
+					.setVisibility(View.GONE);
+			((EditText) getActivity().findViewById(R.id.txtPIN1))
+					.requestFocus();
+		}
 		btnSave.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				EditText txtPin = (EditText) getActivity().findViewById(
-						R.id.txtPIN);
-				String pin = txtPin.getText().toString();
+				PreferenceManager preferenceManager = PreferenceManager
+						.getInstance();
+				EditText newPin = (EditText) getActivity().findViewById(
+						R.id.txtPIN1);
+				String pin = newPin.getText().toString();
+				if (!isFirstPINSave) {
+					EditText oldPin = (EditText) getActivity().findViewById(
+							R.id.txtPIN);
+					String oldPinStr = oldPin.getText().toString();
+					if (oldPinStr == null || oldPinStr.length() == 0) {
+						Toast.makeText(getActivity().getApplicationContext(),
+								"Please enter Old PIN.", Toast.LENGTH_LONG)
+								.show();
+						return;
+					}
+					if (!oldPinStr.equals(preferenceManager.getPINValue())) {
+						Toast.makeText(getActivity().getApplicationContext(),
+								"Invalid Old PIN.", Toast.LENGTH_LONG).show();
+						return;
+					}
+				}
 				if (pin == null || pin.length() == 0) {
 					Toast.makeText(getActivity().getApplicationContext(),
-							"You must enter a PIN.", Toast.LENGTH_LONG).show();
+							"You must enter a New PIN.", Toast.LENGTH_LONG)
+							.show();
 					return;
 				}
 				if (pin.length() < 4) {
@@ -48,10 +78,6 @@ public class SavePinFragment extends Fragment {
 							Toast.LENGTH_LONG).show();
 					return;
 				}
-				PreferenceManager preferenceManager = PreferenceManager
-						.getInstance();
-				preferenceManager.setContext(getActivity()
-						.getApplicationContext());
 				preferenceManager.putPINValue(pin);
 				Toast.makeText(getActivity().getApplicationContext(),
 						"PIN Saved", Toast.LENGTH_LONG).show();
@@ -60,5 +86,4 @@ public class SavePinFragment extends Fragment {
 		});
 
 	}
-
 }

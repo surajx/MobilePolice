@@ -22,5 +22,6 @@
     <string name="navCallBackText">Call Back</string>
     <string name="navGetLocationText">Get Location</string>
     <string name="navSettingText">Settings</string>
+    <string name="pin_desc">PIN is used to validate that a request being sent to your phone originates from its owner. No request shall be processed without setting an initial PIN. Please enter a PIN number with minimum 4 digits.</string>
 
 </resources>
