@@ -22,6 +22,9 @@
     <string name="navCallBackText">Call Back</string>
     <string name="navGetLocationText">Get Location</string>
     <string name="navSettingText">Settings</string>
+    
     <string name="pin_desc">PIN is used to validate that a request being sent to your phone originates from its owner. No request shall be processed without setting an initial PIN. Please enter a PIN number with minimum 4 digits.</string>
+    <string name="export_contacts_desc">Get your contacts in an Excel Spreadsheet. You can use this as a backup or an initial data source for synchronizing contacts into other non-google services.</string>
+    <string name="export_sms_desc">Save your SMS in an Excel Spreadsheet to preserve your message history.</string>
 
 </resources>

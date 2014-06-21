@@ -72,7 +72,7 @@ public class SMSManager {
 			long milliseconds = Long.parseLong(cur.getString(4));
 			Date date = new Date(milliseconds);
 			sms.setDate(date);
-			sms.setContent(cur.getString(11));
+			sms.setContent(cur.getString(12));
 			smsList.add(sms);
 		}
 		return smsList;
