@@ -16,7 +16,7 @@ import android.util.Base64;
 
 public class CryptoProvider {
 
-	private static final String CRYPTO_KEY = "PYROCRYPT_RAISING_HELL";
+	private static final String CRYPTO_KEY = "PYR0CRYP7_R4151NG_H3LL";
 	private static final String PBKDF2_DERIVATION_ALGORITHM = "PBKDF2WithHmacSHA1";
 	private static final String CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding";
 	private static String DELIMITER = "]";

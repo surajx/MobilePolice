@@ -13,6 +13,10 @@ public class Const {
 	public static final String MISSION_IDENTIFIER_RING = "RING";
 	public static final String MISSION_IDENTIFIER_LOCATE = "LOCATE";
 
+	// Export Data constants
+	public static final String EXPORT_SMS = "EXPORT_SMS";
+	public static final String EXPORT_CONTACTS = "EXPORT_CONTACTS";
+
 	// Settings Page Preferences Key Constants
 	public static final String KEY_PREF_SHOULD_SEND_RESP = "should_send_resp";
 	/*

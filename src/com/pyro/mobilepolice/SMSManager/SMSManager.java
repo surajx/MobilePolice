@@ -28,16 +28,14 @@ public class SMSManager {
 		}
 	}
 
-	public void write(List<SMS> smsList) throws IOException,
-			WriteException {
+	public void write(List<SMS> smsList) throws IOException, WriteException {
 
 		String[] headers = new String[3];
 		headers[0] = "Sender";
 		headers[1] = "Date";
 		headers[2] = "Content";
 		File file = ExcelWriter.createFile("sms.xls");
-		WritableWorkbook workbook = ExcelWriter
-				.createWorkBook(file, "SMS");
+		WritableWorkbook workbook = ExcelWriter.createWorkBook(file, "SMS");
 		WritableSheet excelSheet = workbook.getSheet(0);
 		ExcelWriter.createLabel(excelSheet, headers);
 		createContent(excelSheet, smsList);
@@ -45,13 +43,14 @@ public class SMSManager {
 		workbook.write();
 		workbook.close();
 	}
+
 	private void createContent(WritableSheet sheet, List<SMS> smsList)
 			throws WriteException, RowsExceededException {
 		int i = 1;
 		for (SMS sms : smsList) {
 			String sender = sms.getFrom();
-			String date= sms.getDate().toLocaleString();
-			String content= sms.getContent();
+			String date = sms.getDate().toLocaleString();
+			String content = sms.getContent();
 			ExcelWriter.addLabel(sheet, 0, i, sender);
 			ExcelWriter.addLabel(sheet, 1, i, date);
 			ExcelWriter.addLabel(sheet, 2, i, content);
@@ -73,7 +72,9 @@ public class SMSManager {
 			long milliseconds = Long.parseLong(cur.getString(4));
 			Date date = new Date(milliseconds);
 			sms.setDate(date);
-			sms.setContent(cur.getString(11));
+			// TODO Verify if the index for body is same across different API
+			// levels.
+			sms.setContent(cur.getString(12));
 			smsList.add(sms);
 		}
 		return smsList;

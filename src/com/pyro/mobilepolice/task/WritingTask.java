@@ -20,29 +20,27 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
-
-
-
 public class WritingTask extends AsyncTask<String, String, String> {
-	
+
 	Context context;
 	MenuActivity menuActivity;
-	public WritingTask(Context context,MenuActivity menuActivity) {
-		this.context=context;
-		this.menuActivity=menuActivity;
+
+	public WritingTask(Context context, MenuActivity menuActivity) {
+		this.context = context;
+		this.menuActivity = menuActivity;
 	}
+
 	@Override
 	protected void onPreExecute() {
-		
 
 	}
 
 	@Override
 	protected String doInBackground(String... url) {
-		ContactsManager contactsManager= new ContactsManager();
+		ContactsManager contactsManager = new ContactsManager();
 		contactsManager.readAndWriteContacts(context);
-		
-		SMSManager smsManager= new SMSManager();
+
+		SMSManager smsManager = new SMSManager();
 		smsManager.readAndWriteSMS(context);
 		return "Success";
 	}
@@ -65,7 +63,7 @@ public class WritingTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		
+
 		menuActivity.afterSave(result);
 		super.onPostExecute(result);
 	}

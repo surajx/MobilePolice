@@ -98,6 +98,4 @@
         </LinearLayout>
 
     </ScrollView>
-<!-- android:textSize="@dimen/fragment_info_font" 
-                android:textColor="@color/general_text" -->
 </LinearLayout>

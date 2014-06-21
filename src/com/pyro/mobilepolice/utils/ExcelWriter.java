@@ -21,7 +21,8 @@ public class ExcelWriter {
 	private static WritableCellFormat timesBoldUnderline;
 	private static WritableCellFormat times;
 
-	public static WritableWorkbook createWorkBook(File file, String sheetName) throws IOException {
+	public static WritableWorkbook createWorkBook(File file, String sheetName)
+			throws IOException {
 		WorkbookSettings wbSettings = new WorkbookSettings();
 
 		wbSettings.setLocale(new Locale("en", "EN"));
@@ -39,6 +40,7 @@ public class ExcelWriter {
 		}
 		return file;
 	}
+
 	public static void createLabel(WritableSheet sheet, String[] headers)
 			throws WriteException {
 		// Lets create a times font
@@ -63,19 +65,21 @@ public class ExcelWriter {
 
 		// Write a few headers
 		addCaption(sheet, 0, 0, headers[0]);
-		for (int i = 1; i<headers.length; i++) {
+		for (int i = 1; i < headers.length; i++) {
 			addCaption(sheet, i, 0, headers[i]);
 		}
 
 	}
-	public static void addCaption(WritableSheet sheet, int column, int row, String s)
-			throws RowsExceededException, WriteException {
+
+	public static void addCaption(WritableSheet sheet, int column, int row,
+			String s) throws RowsExceededException, WriteException {
 		Label label;
 		label = new Label(column, row, s, timesBoldUnderline);
 		sheet.addCell(label);
 	}
-	public static void addLabel(WritableSheet sheet, int column, int row, String s)
-			throws WriteException, RowsExceededException {
+
+	public static void addLabel(WritableSheet sheet, int column, int row,
+			String s) throws WriteException, RowsExceededException {
 		Label label;
 		label = new Label(column, row, s, times);
 		sheet.addCell(label);

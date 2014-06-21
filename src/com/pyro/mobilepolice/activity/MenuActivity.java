@@ -20,15 +20,15 @@ public class MenuActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
-		//Nandu changed button click
+		// Nandu changed button click
 		ImageButton imgPin = (ImageButton) findViewById(R.id.imgBtnPIN);
 		imgPin.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				//Intent i = new Intent(MenuActivity.this,
-					//	SavePinActivity.class);
-				//startActivity(i);
+				// Intent i = new Intent(MenuActivity.this,
+				// SavePinActivity.class);
+				// startActivity(i);
 			}
 		});
 
