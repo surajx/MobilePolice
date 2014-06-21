@@ -9,7 +9,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:text="Old Pin  : "
+        android:text="Old Pin"
         
         android:textSize="@dimen/fragment_header_font"
                 android:textColor="@color/header_text" />
@@ -22,8 +22,7 @@
         android:layout_alignRight="@+id/txtPIN1"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="4 digit password"
-        android:maxLength="@integer/passwordLength"
+        android:hint="Old Password"
         android:inputType="numberPassword" 
         android:layout_width="200dp"
                 android:background="@drawable/input9patch"
@@ -40,7 +39,7 @@
          android:layout_alignTop="@id/textOptions"
          android:layout_marginLeft="15dp"
          android:layout_marginTop="50dp"
-         android:text="New Pin: "
+         android:text="New Pin"
         android:textSize="@dimen/fragment_header_font"
                 android:textColor="@color/header_text" />
      
@@ -53,8 +52,7 @@
              android:layout_toRightOf="@id/textDescription"
              android:background="@drawable/input9patch"
              android:ems="10"
-             android:maxLength="@integer/passwordLength"
-             android:hint="4 digit password"
+             android:hint="New Password (min 4 digit long)"
              android:inputType="numberPassword"
              android:textSize="@dimen/fragment_info_font" >
 
@@ -62,7 +60,7 @@
     </EditText>
 
          <Button
-             android:id="@+id/btnSavePin"
+             android:id="@+id/btnDoSavePin"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_alignRight="@+id/txtPIN1"
