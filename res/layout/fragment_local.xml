@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/funcDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_descText_topMargin"
+                android:text="Initiate a call back from a remote mobile which has Mobile Police configured.
+Enter the pin number and phone number of the remote mobile. Also enter the phone number of the mobile to intiate the call to and hit 'Initiate Call Back'."
+                android:textSize="@dimen/fragment_info_font"
+                android:textColor="@color/general_text" />
+
+            <Button
+                android:id="@+id/btnInitiate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/general_text"
+                android:background="@drawable/actionbuttonbg" 
+                android:textSize="@dimen/fragment_header_font"
+                android:layout_marginTop="@dimen/fragment_space_after_descText"/>
+            
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

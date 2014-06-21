@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnSavePin"
+            android:layout_width="220dp"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_savepin"
+            android:text="@string/navSavePinText" />
+        
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnExportContact"
+            
+            android:layout_width="wrap_content"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_exportcontact"
+            android:text="@string/navExportContactText" />
+        
+    </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnGetLocation"
+            
+            android:layout_width="220dp"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_location"
+            android:text="@string/navGetLocationText" />
+        
+    </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnExportSMS"
+            
+            android:layout_width="220dp"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_exportsms"
+            android:text="@string/navExportSMSText" />
+        
+    </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnCallForward"
+            
+            android:layout_width="220dp"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_callforward"
+            android:text="@string/navCallForwardText" />
+        
+    </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnCallBack"
+            
+            android:layout_width="220dp"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_callback"
+            android:text="@string/navCallBackText" />
+        
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnRingPhone"
+            
+            android:layout_width="220dp"
+            android:textColor="@color/nav_drawer_text"
+            android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+            android:background="@drawable/actionbuttonbg"
+            android:drawableLeft="@drawable/ic_ringphone"
+            android:text="@string/navRingPhoneText" />
+        </RelativeLayout>
+        </LinearLayout>
+
