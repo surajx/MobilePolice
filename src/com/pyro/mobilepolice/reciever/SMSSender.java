@@ -12,7 +12,7 @@ public class SMSSender {
 
 	public static void sendSMS(String destinationNumber, String message) {
 		SmsManager sms = SmsManager.getDefault();
-		
+
 		sms.sendTextMessage(destinationNumber, null, message, null, null);
 
 	}

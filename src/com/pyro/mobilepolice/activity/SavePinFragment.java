@@ -15,48 +15,51 @@ import android.widget.Toast;
 
 public class SavePinFragment extends Fragment {
 
-	 @Override
-	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	            Bundle savedInstanceState) {
-		 	
-		 	super.onCreateView(inflater, container, savedInstanceState);
-	        View view =  inflater.inflate(R.layout.fragment_save_pin, container, false);
-	        return view;
-	        
-	    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
-	 @Override
-	 public void onActivityCreated (Bundle savedInstanceState)
-	 {
-		 
-		 super.onActivityCreated(savedInstanceState);
-		 Button btnSave = (Button) getActivity().findViewById(R.id.btnSavePin);
-		 btnSave.setOnClickListener(new View.OnClickListener() {
+		super.onCreateView(inflater, container, savedInstanceState);
+		View view = inflater.inflate(R.layout.fragment_save_pin, container,
+				false);
+		return view;
 
-				@Override
-				public void onClick(View arg0) {
-					EditText txtPin = (EditText) getActivity().findViewById(R.id.txtPIN);
-					String pin = txtPin.getText().toString();
-					if (pin == null || pin.length()==0) {
-						Toast.makeText(getActivity().getApplicationContext(),
-								"You must enter a PIN.", Toast.LENGTH_LONG).show();
-						return;
-					}
-					if (pin.length() < 4) {
-						Toast.makeText(getActivity().getApplicationContext(),
-								"PIN must be 4 or more characters long.",
-								Toast.LENGTH_LONG).show();
-						return;
-					}
-					PreferenceManager preferenceManager = PreferenceManager.getInstance();
-					preferenceManager.setContext(getActivity().getApplicationContext());
-					preferenceManager.putPINValue(pin);
-					Toast.makeText(getActivity().getApplicationContext(), "PIN Saved",
-							Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+
+		super.onActivityCreated(savedInstanceState);
+		Button btnSave = (Button) getActivity().findViewById(R.id.btnSavePin);
+		btnSave.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				EditText txtPin = (EditText) getActivity().findViewById(
+						R.id.txtPIN);
+				String pin = txtPin.getText().toString();
+				if (pin == null || pin.length() == 0) {
+					Toast.makeText(getActivity().getApplicationContext(),
+							"You must enter a PIN.", Toast.LENGTH_LONG).show();
+					return;
 				}
-				
-		 });
-			
-	 }
-	 
+				if (pin.length() < 4) {
+					Toast.makeText(getActivity().getApplicationContext(),
+							"PIN must be 4 or more characters long.",
+							Toast.LENGTH_LONG).show();
+					return;
+				}
+				PreferenceManager preferenceManager = PreferenceManager
+						.getInstance();
+				preferenceManager.setContext(getActivity()
+						.getApplicationContext());
+				preferenceManager.putPINValue(pin);
+				Toast.makeText(getActivity().getApplicationContext(),
+						"PIN Saved", Toast.LENGTH_LONG).show();
+			}
+
+		});
+
+	}
+
 }

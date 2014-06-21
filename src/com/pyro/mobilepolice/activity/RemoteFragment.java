@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pyro.mobilepolice.R;
-import com.pyro.mobilepolice.utils.Utils;
 
 public class RemoteFragment extends Fragment {
 
@@ -23,8 +22,8 @@ public class RemoteFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		super.onCreateView(inflater, container, savedInstanceState);
-		View view = inflater.inflate(R.layout.fragment_remote, container,
-				false);
+		View view = inflater
+				.inflate(R.layout.fragment_remote, container, false);
 		return view;
 	}
 
@@ -40,24 +39,29 @@ public class RemoteFragment extends Fragment {
 		String pinHeader = getResources().getString(
 				R.string.frag_remote_pin_header);
 
-		final TextView tvFromPhone = (TextView) getActivity().findViewById(R.id.lostPhoneHeader);
-		final TextView tvToPhone = (TextView) getActivity().findViewById(R.id.toPhoneHeader);
-		final TextView tvPin = (TextView) getActivity().findViewById(R.id.pinNumberHeader);
-		Button btnInitiate = (Button) getActivity().findViewById(R.id.btnInitiate);
-		EditText etFromPhone = (EditText) getActivity().findViewById(R.id.lostPhoneNumber);
-		EditText etToPhone = (EditText) getActivity().findViewById(R.id.toPhoneNumber);
+		final TextView tvFromPhone = (TextView) getActivity().findViewById(
+				R.id.lostPhoneHeader);
+		final TextView tvToPhone = (TextView) getActivity().findViewById(
+				R.id.toPhoneHeader);
+		final TextView tvPin = (TextView) getActivity().findViewById(
+				R.id.pinNumberHeader);
+		Button btnInitiate = (Button) getActivity().findViewById(
+				R.id.btnInitiate);
+		EditText etFromPhone = (EditText) getActivity().findViewById(
+				R.id.lostPhoneNumber);
+		EditText etToPhone = (EditText) getActivity().findViewById(
+				R.id.toPhoneNumber);
 		EditText etPin = (EditText) getActivity().findViewById(R.id.pinNumber);
 		final String smsMessage;
 
-		//String htmlFromPhoneHeader = "<u>" + fromPhoneHeader + "</u>";
-		//String htmlToPhoneHeader = "<u>" + toPhoneHeader + "</u>";
-		//String htmlPinHeader = "<u>" + pinHeader + "</u>";
-		
+		// String htmlFromPhoneHeader = "<u>" + fromPhoneHeader + "</u>";
+		// String htmlToPhoneHeader = "<u>" + toPhoneHeader + "</u>";
+		// String htmlPinHeader = "<u>" + pinHeader + "</u>";
+
 		String htmlFromPhoneHeader = fromPhoneHeader;
 		String htmlToPhoneHeader = toPhoneHeader;
 		String htmlPinHeader = pinHeader;
 
-		
 		tvFromPhone.setText(Html.fromHtml(htmlFromPhoneHeader));
 		tvToPhone.setText(Html.fromHtml(htmlToPhoneHeader));
 		tvPin.setText(Html.fromHtml(htmlPinHeader));
@@ -72,10 +76,8 @@ public class RemoteFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Toast.makeText(getActivity(), "ring phone sms sent",
 							Toast.LENGTH_SHORT).show();
-
 				}
 			});
 		} else if (funcSelected.equals(getResources().getString(
@@ -86,7 +88,6 @@ public class RemoteFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Toast.makeText(getActivity(), "call back sms sent",
 							Toast.LENGTH_SHORT).show();
 				}
@@ -101,26 +102,25 @@ public class RemoteFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Toast.makeText(getActivity(), "get location sms sent",
 							Toast.LENGTH_SHORT).show();
 
 				}
 			});
-		} else if (funcSelected.equals(getResources().getString(R.string.navCallForwardText))) {
-			
+		} else if (funcSelected.equals(getResources().getString(
+				R.string.navCallForwardText))) {
+
 			btnInitiate.setText("Start Call Forward");
 
 			btnInitiate.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Toast.makeText(getActivity(), "call back sms sent",
 							Toast.LENGTH_SHORT).show();
 				}
 			});
 		}
-		
+
 	}
 }
