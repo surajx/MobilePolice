@@ -64,6 +64,16 @@ public class SMSManager {
 		Uri uriSMSURI = Uri.parse("content://sms/inbox");
 		Cursor cur = context.getContentResolver().query(uriSMSURI, null, null,
 				null, null);
+		int cnt = 0;
+		for (String colName : cur.getColumnNames()) {
+			if ("body".equals(colName)) {
+				break;
+			}
+			cnt++;
+		}
+		cur.close();
+		cur = context.getContentResolver().query(uriSMSURI, null, null, null,
+				null);
 		while (cur.moveToNext()) {
 
 			SMS sms = new SMS();
@@ -74,9 +84,10 @@ public class SMSManager {
 			sms.setDate(date);
 			// TODO Verify if the index for body is same across different API
 			// levels.
-			sms.setContent(cur.getString(12));
+			sms.setContent(cur.getString(cnt));
 			smsList.add(sms);
 		}
+		cur.close();
 		return smsList;
 	}
 }
