@@ -1,5 +1,8 @@
 package com.pyro.mobilepolice.constants;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Const {
 
 	// Mission Request Constants
@@ -24,5 +27,16 @@ public class Const {
 	 * the value of Is Response Sent after Mission Request setting in it. By
 	 * default the setting is false i.e. no response is sent.
 	 */
+
+	public static final Map<String, String> PREFERENCE_MAP;
+	static {
+		PREFERENCE_MAP = new HashMap<String, String>();
+		PREFERENCE_MAP.put(MISSION_IDENTIFIER_MAKE_CALL, "pref_key_call_back");
+		PREFERENCE_MAP.put(MISSION_IDENTIFIER_START_CALL_FWD,
+				"pref_key_call_forward");
+		PREFERENCE_MAP.put(MISSION_IDENTIFIER_RING, "pref_key_ring_phone");
+		PREFERENCE_MAP.put(MISSION_IDENTIFIER_LOCATE, "pref_key_get_location");
+
+	}
 
 }

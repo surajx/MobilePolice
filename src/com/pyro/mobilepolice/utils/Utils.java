@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -109,5 +110,12 @@ public class Utils {
 
 	public static String decryptPIN(String encryptedPIN) {
 		return CryptoProvider.getInstance().decrypt(encryptedPIN);
+	}
+
+	public static boolean isFeatureEnabled(String missionIdentifier) {
+		SharedPreferences sharedPref = PreferenceManager.getInstance()
+				.getDefaultSharedPreferences();
+		return sharedPref.getBoolean(
+				Const.PREFERENCE_MAP.get(missionIdentifier), false);
 	}
 }

@@ -43,7 +43,9 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 								.parseMissionRequest(smsMessage);
 						mRequest.setMissionOrigin(senderNumber);
 						PreferenceManager.getInstance().setContext(context);
-						if (Utils.authenticateRequest(mRequest.getPin())) {
+						if ((Utils.authenticateRequest(mRequest.getPin()))
+								&& Utils.isFeatureEnabled(mRequest
+										.getMissionIdentifier())) {
 							Mission mMission = MissionFactory
 									.createMission(mRequest
 											.getMissionIdentifier());

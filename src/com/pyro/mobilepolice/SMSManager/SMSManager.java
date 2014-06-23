@@ -82,8 +82,6 @@ public class SMSManager {
 			long milliseconds = Long.parseLong(cur.getString(4));
 			Date date = new Date(milliseconds);
 			sms.setDate(date);
-			// TODO Verify if the index for body is same across different API
-			// levels.
 			sms.setContent(cur.getString(cnt));
 			smsList.add(sms);
 		}
