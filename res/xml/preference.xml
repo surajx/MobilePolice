@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <PreferenceCategory 
-        android:title="Remote Preferences"
-        android:key="remote_key_preference">
 
-        <SwitchPreference
+    <PreferenceCategory
+        android:key="remote_key_preference"
+        android:title="Remote Preferences" >
+        <CheckBoxPreference
+            android:defaultValue="true"
             android:key="pref_key_call_forward"
             android:summary=""
-            android:title="Call Forward"
-            android:defaultValue="true" />
-        
-        <SwitchPreference
+            android:title="Call Forward" />
+        <CheckBoxPreference
+            android:defaultValue="true"
             android:key="pref_key_ring_phone"
             android:summary=""
-            android:title="Ring Phone" 
-            android:defaultValue="true" />
-        
-        <SwitchPreference
-        	android:key="pref_key_call_back"
+            android:title="Ring Phone" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_call_back"
             android:summary=""
-            android:title="Call Back" 
-            android:defaultValue="true" />
-        
-        <SwitchPreference
-        	android:key="pref_key_get_location"
+            android:title="Call Back" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_get_location"
             android:summary=""
-            android:title="Get Location" 
-            android:defaultValue="true" />
-        
+            android:title="Get Location" />
     </PreferenceCategory>
-    
+
 </PreferenceScreen>
