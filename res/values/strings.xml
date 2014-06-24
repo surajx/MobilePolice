@@ -24,11 +24,11 @@
     <string name="navSettingText">Settings</string>
     
     <string name="pin_desc">PIN is used to validate that a request being sent to your phone originates from its owner. No request shall be processed without setting an initial PIN. Please enter a PIN number with minimum 4 digits.</string>
-    <string name="export_contacts_desc">Get your contacts in an Excel Spreadsheet. You can use this as a backup or an initial data source for synchronizing contacts into other non-google services.</string>
-    <string name="export_sms_desc">Save your SMS in an Excel Spreadsheet to preserve your message history.</string>
+    <string name="export_contacts_desc">Get your contacts in an Excel Spreadsheet. You can use this as a backup or an initial data source for synchronizing contacts into other non-google services. Once export is done, contacts.xls can be found on your sdcard root.</string>
+    <string name="export_sms_desc">Save your SMS in an Excel Spreadsheet to preserve your message history. Once export is done, sms.xls can be found on your sdcard root.</string>
     <string name="call_fwd_desc">Did you forget your phone at home? Don\'t fret, enable call forwarding remotely using this feature. Enter an accessible phone number(even hardline) and get your calls forwarded.</string>
     <string name="get_location_desc">Lost your Phone? Locate your phone even if your phone\'s GPS or Data is OFF.</string>
     <string name="init_call_desc">Remotely Initiate a call on your phone. You can give the target  phone number as this phone\'s number to listen to the phone\'s surroundings.</string>
-    <string name="ring_phone_desc">Unable to find your phone?? Use this feature to Play your phone\'s ringtone at full volume, this even plays the tone even if the phone is in Silent mode.</string>
+    <string name="ring_phone_desc">Unable to find your phone?? Use this feature to Play your phone\'s ringtone at full volume, the tone is played even if the phone is in Silent mode.</string>
 
 </resources>
