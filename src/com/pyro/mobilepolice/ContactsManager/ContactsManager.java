@@ -78,14 +78,6 @@ public class ContactsManager {
 
 	}
 
-	// private void addNumber(WritableSheet sheet, int column, int row,
-	// Integer integer) throws WriteException, RowsExceededException {
-	// Number number;
-	// number = new Number(column, row, integer, times);
-	//
-	// sheet.addCell(number);
-	// }
-
 	public List<Contact> fetchContacts(Context context) {
 		List<Contact> contacts = new ArrayList<Contact>();
 
