@@ -75,7 +75,7 @@ public class Utils {
 		try {
 			mMissionRequest.setMissionData(parts[3]);// mission data - optional
 		} catch (Exception e) {
-			Log.d(TAG, "Mission data not provided.");
+			// Log.d(TAG, "Mission data not provided.");
 		}
 		return mMissionRequest;
 	}
@@ -95,8 +95,8 @@ public class Utils {
 	public static boolean authenticateRequest(String pin) {
 		PreferenceManager preferenceManager = PreferenceManager.getInstance();
 		String savedPin = preferenceManager.getPINValue();
-		Log.d(TAG, "savedPin: " + savedPin);
-		Log.d(TAG, "receivedPin: " + pin);
+		// Log.d(TAG, "savedPin: " + savedPin);
+		// Log.d(TAG, "receivedPin: " + pin);
 		return (pin.equalsIgnoreCase(savedPin));
 	}
 

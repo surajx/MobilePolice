@@ -38,7 +38,7 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 				smsMessage = smsMessage.trim();
 				if (Utils.checkIfMissionRequest(smsMessage))
 					try {
-						Log.d(TAG, "Valid Request received: " + smsMessage);
+						// Log.d(TAG, "Valid Request received: " + smsMessage);
 						MissionRequest mRequest = Utils
 								.parseMissionRequest(smsMessage);
 						mRequest.setMissionOrigin(senderNumber);
@@ -61,7 +61,7 @@ public class IncomingSmsReciever extends BroadcastReceiver {
 							}
 						}
 					} catch (ArrayIndexOutOfBoundsException e) {
-						Log.e(TAG, "Received an ill formatted Request SMS");
+						// Log.e(TAG, "Received an ill formatted Request SMS");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

@@ -28,7 +28,7 @@ public class CallForwardingMission implements Mission {
 			preferenceManager.putCallForwardingNumber(mMissionData);
 			String callFwdUSSD = startForwardingUSSDPrefix + mMissionData
 					+ startForwardingUSSDSuffix;
-			Log.d(TAG, "callFwdUSSD: " + callFwdUSSD);
+			// Log.d(TAG, "callFwdUSSD: " + callFwdUSSD);
 			Utils.callPhoneNumber(context, callFwdUSSD);
 		} else {
 			preferenceManager.removeCallForwardNumber();

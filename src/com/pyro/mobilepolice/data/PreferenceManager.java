@@ -31,14 +31,14 @@ public class PreferenceManager {
 		String encryptedPIN = Utils.encryptPIN(pin);
 		editor.putString("PIN", encryptedPIN);
 		editor.commit();
-		Log.d(TAG, "encryptedPIN: " + settings.getString("PIN", "NIL"));
+		// Log.d(TAG, "encryptedPIN: " + settings.getString("PIN", "NIL"));
 	}
 
 	public boolean isPINNotSet() {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);
 		String encryptedPIN = settings.getString("PIN", "NIL");
-		Log.d(TAG, "encryptedPIN: " + encryptedPIN);
+		// Log.d(TAG, "encryptedPIN: " + encryptedPIN);
 		return ("NIL".equals(encryptedPIN) || encryptedPIN == null || encryptedPIN
 				.isEmpty());
 	}
@@ -47,7 +47,7 @@ public class PreferenceManager {
 		SharedPreferences settings = context
 				.getSharedPreferences(PREFS_NAME, 0);
 		String encryptedPIN = settings.getString("PIN", "NIL");
-		Log.d(TAG, "encryptedPIN: " + encryptedPIN);
+		// Log.d(TAG, "encryptedPIN: " + encryptedPIN);
 		if ("NIL".equals(encryptedPIN) || encryptedPIN == null
 				|| encryptedPIN.isEmpty()) {
 			Random rnd = new Random();
@@ -64,7 +64,7 @@ public class PreferenceManager {
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("CallForward", callForwardingNumber);
 		editor.commit();
-		Log.d(TAG, settings.getString("CallForward", "NIL"));
+		// Log.d(TAG, settings.getString("CallForward", "NIL"));
 
 	}
 

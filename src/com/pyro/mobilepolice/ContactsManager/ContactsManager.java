@@ -111,7 +111,7 @@ public class ContactsManager {
 			contacts.add(contact);
 
 		}
-		Log.d(TAG, contacts.toString());
+		// Log.d(TAG, contacts.toString());
 		return contacts;
 	}
 }

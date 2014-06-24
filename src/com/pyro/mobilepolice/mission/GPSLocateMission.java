@@ -34,7 +34,7 @@ public class GPSLocateMission implements Mission {
 					"Unable to get GPS Location at this moment.",
 					Toast.LENGTH_SHORT);
 			toast.show();
-			Log.d(TAG, "Unable to get GPS Location at this moment.");
+			// Log.d(TAG, "Unable to get GPS Location at this moment.");
 		}
 	}
 
