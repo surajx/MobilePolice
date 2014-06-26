@@ -230,7 +230,7 @@ public class MainActivity extends ActionBarActivity implements
 
 		case (R.id.action_about):
 			Intent intent2 = new Intent(this,
-					com.pyro.mobilepolice.activity.AboutMeActivity.class);
+					com.pyro.mobilepolice.activity.AboutActivity.class);
 			startActivity(intent2);
 			return true;
 

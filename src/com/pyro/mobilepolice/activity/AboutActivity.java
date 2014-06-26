@@ -11,20 +11,20 @@ import android.widget.TextView;
 
 import com.pyro.mobilepolice.R;
 
-public class AboutMeActivity  extends ActionBarActivity  {
+public class AboutActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.activity_about);
-		
+
 		getSupportActionBar().setBackgroundDrawable(
 				getResources().getDrawable(R.drawable.ab_titlebar0));
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
-		
+
 		final int actionBarTitle = Resources.getSystem().getIdentifier(
 				"action_bar_title", "id", "android");
 
@@ -37,15 +37,15 @@ public class AboutMeActivity  extends ActionBarActivity  {
 			title.setTypeface(mTypeface);
 			title.setTextSize(22);
 		}
-		
-		
-		Drawable background = getResources().getDrawable(R.drawable.splash_screen);
+
+		Drawable background = getResources().getDrawable(
+				R.drawable.splash_screen);
 		LinearLayout layout = ((LinearLayout) findViewById(R.id.abtLinearLayout));
 		background.setAlpha(150);
 		layout.setBackgroundDrawable(background);
 
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
