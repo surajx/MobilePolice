@@ -223,11 +223,24 @@ public class MainActivity extends ActionBarActivity implements
 		switch (item.getItemId()) {
 
 		case (R.id.action_settings):
-			Intent intent = new Intent(this,
+			Intent intent1 = new Intent(this,
 					com.pyro.mobilepolice.activity.SettingsActivity.class);
-			startActivity(intent);
+			startActivity(intent1);
+			return true;
+
+		case (R.id.action_about):
+			Intent intent2 = new Intent(this,
+					com.pyro.mobilepolice.activity.AboutMeActivity.class);
+			startActivity(intent2);
+			return true;
+
+		case (R.id.action_help):
+			Intent intent3 = new Intent(this,
+					com.pyro.mobilepolice.activity.HelpActivity.class);
+			startActivity(intent3);
 			return true;
 		}
+
 		return true;
 	}
 
