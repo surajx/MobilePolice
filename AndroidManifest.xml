@@ -28,12 +28,24 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <!--<receiver android:name="com.pyro.mobilepolice.reciever.IncomingCallReciever" >
+        <!--
+        <receiver android:name="com.pyro.mobilepolice.reciever.IncomingCallReciever" >
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
-        </receiver> -->
+        </receiver>
+        -->
 
+        <activity
+            android:name="com.pyro.mobilepolice.activity.HelpActivity"
+            android:label="@string/title_activity_menu"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.pyro.mobilepolice.activity.AboutActivity"
+            android:label="@string/title_activity_menu"
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name="com.pyro.mobilepolice.activity.MainActivity"
             android:label="@string/title_activity_menu"
