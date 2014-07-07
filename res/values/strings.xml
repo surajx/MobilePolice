@@ -32,5 +32,7 @@
     <string name="get_location_desc">Lost your Phone? Locate your phone even if your phone\'s GPS or Data is OFF.</string>
     <string name="init_call_desc">Remotely Initiate a call on your phone. You can give the target  phone number as this phone\'s number to listen to the phone\'s surroundings.</string>
     <string name="ring_phone_desc">Unable to find your phone?? Use this feature to Play your phone\'s ringtone at full volume, the tone is played even if the phone is in Silent mode.</string>
+    <string name="about_us_header">PyroCrypt</string>
+    <string name="about_us">We are gamers, coders, designers and marketeers; Essentially we automate and create stuff! \n\nLeave us a comment in play store and dont forget to rate us. \n\nStay tuned for our next release :)</string>
 
 </resources>
