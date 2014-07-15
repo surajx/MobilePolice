@@ -9,8 +9,9 @@
    <color name="general_text1">#1f627f</color>
    <color name="general_text">#ebf0f2</color>
    
-   <color name="header_text1">#4D6874</color>  
-   <color name="header_text">#FF8C26</color> 
+   <color name="header_text1">#4D6874</color>
+   <color name="header_text_menu">#FF8C26</color>
+   <color name="header_text">#ebf0f2</color>
    
    <!--  <color name="pyro_background">#fbc3a4</color>#f0cdb9 -->
    

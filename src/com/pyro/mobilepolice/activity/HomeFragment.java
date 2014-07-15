@@ -1,11 +1,13 @@
 package com.pyro.mobilepolice.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.pyro.mobilepolice.R;
@@ -25,7 +27,10 @@ public class HomeFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
+		final InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputMethodManager.hideSoftInputFromWindow(getView().getWindowToken(),
+				0);
 		final Button btnSavePin = (Button) getActivity().findViewById(
 				R.id.btnSavePin);
 		final Button btnCallBack = (Button) getActivity().findViewById(

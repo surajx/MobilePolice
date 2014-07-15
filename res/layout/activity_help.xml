@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/fragment_space_after_descText"
             android:text="@string/help_header"
-            android:textColor="@color/header_text"
+            android:textColor="@color/header_text_menu"
             android:textSize="@dimen/fragment_header_font" />
 
         <TextView
