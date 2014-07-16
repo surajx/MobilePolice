@@ -81,6 +81,7 @@ public class SavePinFragment extends Fragment {
 				preferenceManager.putPINValue(pin);
 				Toast.makeText(getActivity().getApplicationContext(),
 						"PIN Saved", Toast.LENGTH_LONG).show();
+				getFragmentManager().popBackStack();
 			}
 
 		});

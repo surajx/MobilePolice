@@ -20,7 +20,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/fragment_descText_topMargin"
             android:text="@string/about_us_header"
-            android:textColor="@color/header_text"
+            android:textColor="@color/header_text_menu"
             android:textSize="@dimen/fragment_header_font"
             android:textStyle="bold" />
 
