@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pyro.mobilepolice.R;
 import com.pyro.mobilepolice.ContactsManager.ContactsManager;
@@ -63,8 +64,8 @@ public class LocalFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					ExportTask exportContactsTask = new ExportTask();
-					exportContactsTask.execute(Const.EXPORT_SMS);
+					ExportTask exportSMSTask = new ExportTask();
+					exportSMSTask.execute(Const.EXPORT_SMS);
 				}
 			});
 		}
@@ -84,6 +85,8 @@ public class LocalFragment extends Fragment {
 		protected void onPostExecute(Void result) {
 			if (progressDialog != null)
 				Utils.dismissProgressDialog(progressDialog);
+			Toast.makeText(getActivity().getApplicationContext(),
+					"Export Completed.", Toast.LENGTH_LONG).show();
 		}
 
 		@Override
