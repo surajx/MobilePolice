@@ -1,7 +1,11 @@
 package com.pyro.mobilepolice.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -21,6 +25,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -104,6 +111,44 @@ public class MainActivity extends ActionBarActivity implements
 			ft.add(R.id.content_frame, new HomeFragment());
 			ft.commit();
 		}
+		SharedPreferences sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		
+		boolean showCheckBox = sharedPreferences.getBoolean("pref_initial_dialogue_box",false);
+		
+		if (!showCheckBox) {
+			
+			View dialogueBoxView = View.inflate(this, R.layout.dialogue_box,
+					null);
+			CheckBox checkBox = (CheckBox) dialogueBoxView
+					.findViewById(R.id.checkboxDialogue);
+
+			checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(buttonView.getContext());
+					Editor editor = sharedPreferences.edit();
+					editor.putBoolean("pref_initial_dialogue_box", isChecked);
+					editor.commit();
+
+				}
+			});
+
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(getString(R.string.help_header));
+			builder.setView(dialogueBoxView)
+					.setCancelable(false)
+					.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							}).show();
+
+		}
+
 	}
 
 	private class DrawerItemClickListener implements
