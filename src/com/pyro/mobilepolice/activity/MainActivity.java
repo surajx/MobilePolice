@@ -113,11 +113,12 @@ public class MainActivity extends ActionBarActivity implements
 		}
 		SharedPreferences sharedPreferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		
-		boolean showCheckBox = sharedPreferences.getBoolean("pref_initial_dialogue_box",false);
-		
+
+		boolean showCheckBox = sharedPreferences.getBoolean(
+				"pref_initial_dialogue_box", false);
+
 		if (!showCheckBox) {
-			
+
 			View dialogueBoxView = View.inflate(this, R.layout.dialogue_box,
 					null);
 			CheckBox checkBox = (CheckBox) dialogueBoxView
@@ -127,7 +128,9 @@ public class MainActivity extends ActionBarActivity implements
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
-					SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(buttonView.getContext());
+					SharedPreferences sharedPreferences = PreferenceManager
+							.getDefaultSharedPreferences(buttonView
+									.getContext());
 					Editor editor = sharedPreferences.edit();
 					editor.putBoolean("pref_initial_dialogue_box", isChecked);
 					editor.commit();
@@ -136,7 +139,7 @@ public class MainActivity extends ActionBarActivity implements
 			});
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle(getString(R.string.help_header));
+			builder.setTitle(getString(R.string.mp_title_ver));
 			builder.setView(dialogueBoxView)
 					.setCancelable(false)
 					.setPositiveButton("OK",
