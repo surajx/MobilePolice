@@ -5,7 +5,7 @@ import java.util.Random;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
+import android.provider.Settings.Secure;
 
 import com.pyrocrypt.mobilepolice.utils.Utils;
 
@@ -91,5 +91,10 @@ public class PreferenceManager {
 
 	public void setContext(Context context) {
 		this.context = context;
+	}
+
+	public String getUniqueID() {
+		return Secure.getString(this.context.getContentResolver(),
+				Secure.ANDROID_ID);
 	}
 }
