@@ -22,10 +22,8 @@
             android:textColor="@color/header_text_menu"
             android:textSize="@dimen/fragment_header_font" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtHelpText"
-            android:editable = "false"
-            android:cursorVisible="false"
             android:textIsSelectable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

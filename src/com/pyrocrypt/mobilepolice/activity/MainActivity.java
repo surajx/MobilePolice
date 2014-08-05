@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +18,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +32,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.pyrocrypt.mobilepolice.R;
@@ -137,6 +141,20 @@ public class MainActivity extends ActionBarActivity implements
 
 				}
 			});
+
+			ScrollView mScrollView = (ScrollView) dialogueBoxView
+					.findViewById(R.id.scrollView1);
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			try {
+				display.getSize(size);
+			} catch (java.lang.NoSuchMethodError ignore) { // Older device
+				size.x = display.getWidth();
+				size.y = display.getHeight();
+			}
+			int screenHeight = (int) (size.y * 0.5);
+			mScrollView.setLayoutParams(new LinearLayout.LayoutParams(
+					LayoutParams.MATCH_PARENT, screenHeight));
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle(getString(R.string.mp_title_ver));
